@@ -6,8 +6,8 @@
     
     <title>倪海厦纪念馆 | 汉唐中医经方宗师 | Ni Hai-Sha Memorial</title>
     
-    <meta name="description" content="倪海厦（Ni Hai-Sha, 1954-2012）纪念网站。传承汉唐中医，发扬经方绝学。">
-    <meta name="keywords" content="倪海厦, Ni Hai-Sha, 汉唐中医, 经方, TCM">
+    <meta name="description" content="倪海厦（Ni Hai-Sha, 1954-2012）纪念网站。生于台湾，旅美经方大师，汉唐中医创办人。致力传承《人纪》绝学，曾任佛州针灸委员会副主席，于斯坦福大学演讲。">
+    <meta name="keywords" content="倪海厦, Ni Hai-Sha, 汉唐中医, 经方, 人纪, 佛州针灸师, 斯坦福演讲, 周左宇, 徐济民">
     <meta name="author" content="Ni Hai-Sha Memorial">
     
     <meta property="og:image" content="https://raw.githubusercontent.com/leijimu/nihaixia/refs/heads/main/nihaixia-wb.jpg">
@@ -32,12 +32,11 @@
             font-family: "Georgia", "Noto Serif SC", "Noto Serif TC", "Noto Serif JP", "Songti SC", "STSong", serif;
             background-color: var(--bg-paper);
             color: var(--ink-black);
-            line-height: 1.8;
+            line-height: 1.9;
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
             -webkit-font-smoothing: antialiased;
         }
 
-        /* 标题使用楷体风格 */
         h1, h2, h3, .book-icon {
             font-family: "Kaiti", "STKaiti", "KaiTi", "Noto Serif SC", serif;
             font-weight: normal;
@@ -48,7 +47,7 @@
             letter-spacing: 0.02em;
         }
 
-        /* 语言切换显示逻辑 */
+        /* 语言显示逻辑 */
         [class^="lang-"] { display: none; }
         body.show-cn .lang-cn { display: block; } body.show-cn .lang-cn-inline { display: inline; }
         body.show-tw .lang-tw { display: block; } body.show-tw .lang-tw-inline { display: inline; }
@@ -88,47 +87,39 @@
             border-bottom-color: var(--cinnabar);
         }
 
-        /* ================= 核心修复：照片与英雄区域 ================= */
+        /* 英雄区域 */
         .hero-section {
-            padding: 50px 0 60px; /* 增加顶部空间 */
+            padding: 50px 0 50px;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
-        /* 1. 照片外框：桌面端默认尺寸 */
         .portrait-frame {
             width: 160px;
             height: 200px;
             padding: 8px;
-            border: 1px solid rgba(0,0,0,0.1); /* 极细边框 */
+            border: 1px solid rgba(0,0,0,0.1);
             background: #fff;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05); /* 轻微立体感 */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             margin-bottom: 30px;
-            /* 居中修复 */
             display: flex; 
             justify-content: center;
             align-items: center;
         }
 
-        /* 2. 图片本体：使用 img 标签控制 */
         .portrait-img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* 确保填充且不变形 */
-            object-position: top center; /* 确保头部不被裁剪 */
+            object-fit: cover;
+            object-position: top center;
             filter: grayscale(100%); 
             transition: filter 0.5s ease;
             display: block;
         }
-
-        /* 交互：鼠标悬停或手机按住时恢复彩色 */
         .portrait-frame:hover .portrait-img,
-        .portrait-frame:active .portrait-img { 
-            filter: grayscale(0%); 
-        }
+        .portrait-frame:active .portrait-img { filter: grayscale(0%); }
 
-        /* 名字样式 */
         h1.master-name {
             font-size: 3.2rem;
             letter-spacing: 0.5em;
@@ -157,7 +148,7 @@
             padding-top: 10px;
         }
 
-        /* 内容区 */
+        /* 内容区域 */
         .content-section { padding: 40px 0; text-align: center; }
 
         h2.section-header {
@@ -174,14 +165,16 @@
         }
 
         .bio-text {
-            max-width: 680px; margin: 0 auto;
-            font-size: 1.15rem; text-align: justify;
-            color: #222; line-height: 1.9;
+            max-width: 700px; margin: 0 auto;
+            font-size: 1.1rem; text-align: justify;
+            color: #222;
         }
         body.show-cn .bio-text, body.show-tw .bio-text, body.show-jp .bio-text { text-indent: 2em; }
         body.show-en .bio-text { text-indent: 0; }
+        
+        .bio-text p { margin-bottom: 1.8em; }
 
-        /* 书籍区 */
+        /* 书籍区域 */
         .books-container {
             display: grid; grid-template-columns: repeat(3, 1fr);
             gap: 30px; margin-top: 20px;
@@ -198,9 +191,9 @@
         h3.book-title { font-size: 1.3rem; margin-bottom: 10px; color: var(--ink-black); }
         .book-desc { font-size: 0.9rem; color: var(--ink-grey); line-height: 1.7; }
 
-        /* 语录区 */
+        /* 语录区域 */
         .motto-section {
-            margin: 60px 0 40px; text-align: center;
+            margin: 40px 0 40px; text-align: center;
             display: flex; justify-content: center;
         }
         .motto-text {
@@ -225,33 +218,20 @@
             border-radius: 2px; letter-spacing: 2px;
         }
 
-        /* ================= 移动端深度适配 ================= */
+        /* 移动端适配 */
         @media (max-width: 768px) {
             .main-wrapper { 
                 padding: 20px 15px; 
                 width: 100%; max-width: 100%;
                 box-shadow: none; border: none;
             }
-
-            /* 修复1: 手机端照片尺寸微调，防止过大 */
-            .portrait-frame {
-                width: 140px;
-                height: 175px;
-                padding: 6px;
-                margin-bottom: 25px;
-            }
-
-            /* 修复2: 名字强制横排，防止竖排撑破布局 */
+            .portrait-frame { width: 140px; height: 175px; padding: 6px; margin-bottom: 25px; }
             h1.master-name { 
-                font-size: 2.4rem; 
-                writing-mode: horizontal-tb; 
-                letter-spacing: 0.2em; 
-                margin-top: 10px;
-                line-height: 1.4;
+                font-size: 2.4rem; writing-mode: horizontal-tb; 
+                letter-spacing: 0.2em; margin-top: 10px; line-height: 1.4;
             }
             body.show-en h1.master-name { font-size: 1.8rem; letter-spacing: 0px; }
-
-            /* 布局调整 */
+            
             .books-container { grid-template-columns: 1fr; gap: 50px; padding: 40px 20px; }
             
             .motto-text { 
@@ -260,11 +240,8 @@
                 border-right: none; border-bottom: 1px solid var(--border-line);
                 padding-bottom: 30px; padding-right: 0; width: 85%;
             }
-
             .lang-switch { top: 10px; right: 10px; }
             .lang-btn { margin: 0 8px; font-size: 1rem; }
-            
-            h2.section-header::before, h2.section-header::after { width: 20px; margin: 0 10px; }
         }
     </style>
 </head>
@@ -278,7 +255,6 @@
         </div>
 
         <header class="hero-section">
-            <!-- 照片结构修复：使用 img 标签 -->
             <div class="portrait-frame">
                 <img src="https://raw.githubusercontent.com/leijimu/nihaixia/refs/heads/main/nihaixia-wb.jpg" 
                      class="portrait-img" 
@@ -302,21 +278,55 @@
                 <span class="lang-en">Biography</span>
             </h2>
             <div class="bio-text">
+                <!-- 简体 -->
                 <div class="lang-cn">
-                    <p>倪海厦（Hai-Sha Ni），生于台湾，祖籍浙江瑞安。当世罕见之经方通才，毕生致力于发扬中医正统。</p>
-                    <p>先生治学，上知天文，下知地理，中知人事。痛心中医之式微，立誓通过《天纪》、《人纪》、《地纪》三部巨著，将失落千年的汉唐医道重现人间。其行医风格大开大合，常有一剂知、二剂已之神效，后世尊为“倪师”。</p>
+                    <p>倪海厦（1954-2012），生于台湾，早年毕业于东吴大学政治学系。少时曾梦想成为摇滚吉他手，后因阅读《医宗金鉴》自学治愈亲人妇科疾病，遂与中医结下不解之缘。他博古通今，除精通医术外，亦擅长命理、占卜与风水（化名梵宇龙），展现了传统文化通才的造诣。</p>
+                    <p>1990年代初，倪师赴美创立“汉唐经方中医诊所”及汉唐中医学院。他曾于2000年至2003年受命担任美国佛罗里达州针灸委员会委员及副主席，致力推动针灸立法，并获侨委会颁发海外优秀华人奖。倪师一生力排众议，强烈批判西方医学之流弊，誓言复兴《伤寒》、《金匮》之正统经方。晚年更受邀至上海中医药大学扶阳论坛及斯坦福大学（Stanford University）演讲，吸引千人聆听，引起巨大反响。</p>
+                    <p>为将毕生所学传承后世，倪师耗尽心血录制《人纪》教学，涵盖针灸、内经、本草、伤寒、金匮五大篇章，成为当代中医教育的重要瑰宝。</p>
+                </div>
+                
+                <!-- 繁体 -->
+                <div class="lang-tw">
+                    <p>倪海廈（1954-2012），生於台灣，早年畢業於東吳大學政治學系。少時曾夢想成為搖滾吉他手，後因閱讀《醫宗金鑑》自學治癒親人婦科疾病，遂與中醫結下不解之緣。他博古通今，除精通醫術外，亦擅長命理、占卜與風水（化名梵宇龍），展現了傳統文化通才的造詣。</p>
+                    <p>1990年代初，倪師赴美創立「漢唐經方中醫診所」及漢唐中醫學院。他曾於2000年至2003年受命擔任美國佛羅里達州針灸委員會委員及副主席，致力推動針灸立法，並獲僑委會頒發海外優秀華人獎。倪師一生力排眾議，強烈批判西方醫學之流弊，誓言復興《傷寒》、《金匱》之正統經方。晚年更受邀至上海中醫藥大學扶陽論壇及史丹福大學（Stanford University）演講，吸引千人聆聽，引起巨大反響。</p>
+                    <p>為將畢生所學傳承後世，倪師耗盡心血錄製《人紀》教學，涵蓋針灸、內經、本草、傷寒、金匱五大篇章，成為當代中醫教育的重要瑰寶。</p>
+                </div>
+
+                <!-- 日文 -->
+                <div class="lang-jp">
+                    <p>倪海厦（ニ・ハイシャ、1954-2012）。台湾に生まれ、東呉大学政治学部を卒業。若き日はロックギタリストを夢見ていたが、『医宗金鑑』を独学し姉の病を治癒させたことを機に、医学の道へと進んだ。医術のみならず、命理、占卜、風水（筆名：梵宇龍）にも精通した。</p>
+                    <p>1990年代に渡米し、「漢唐経方中医診療所」及び学院を開設。2000年から2003年までフロリダ州鍼灸委員会の副委員長を歴任し、米国における鍼灸の法的地位向上に尽力した。生涯を通じて現代西洋医学の偏重を強く批判し、漢代・唐代の正統なる「経方」医学の復興に捧げた。晩年には上海中医薬大学やスタンフォード大学（Stanford University）で講演を行い、大きな反響を呼んだ。</p>
+                    <p>その絶学を後世に残すべく、心血を注いで『人紀』シリーズ（鍼灸、内経、本草、傷寒、金匱）を完成させた。</p>
+                </div>
+
+                <!-- 英文 -->
+                <div class="lang-en">
+                    <p>Ni Hai-Sha (1954–2012), born in Taiwan, was a graduate of Soochow University. In his youth, he dreamed of becoming a rock guitarist but turned to Traditional Chinese Medicine (TCM) after curing his sister's illness by studying the <em>Golden Mirror of Medicine</em>. A true polymath, Master Ni was also an expert in Feng Shui and astrology (under the alias Fan Yulong).</p>
+                    <p>In the 1990s, he founded the "Han Tang TCM Clinic" in the US. He served as Vice Chair of the Florida Board of Acupuncture (2000-2003), playing a key role in legislative advancements for acupuncture. Known for his bold criticism of Western pharmaceutical reliance, he dedicated his life to reviving the orthodox "Jing Fang" (Classical Prescriptions). His influence reached global heights with major lectures at the Shanghai University of TCM and Stanford University.</p>
+                    <p>His legacy is immortalized in the "Ren Ji" series, a comprehensive teaching of the five classic pillars of TCM: Acupuncture, Neijing, Herbology, Shanghan, and Jinkui.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2 class="section-header">
+                <span class="lang-cn">师承与轶事</span>
+                <span class="lang-tw">師承與軼事</span>
+                <span class="lang-jp">師承と逸話</span>
+                <span class="lang-en">Lineage & Anecdotes</span>
+            </h2>
+            <div class="bio-text">
+                <div class="lang-cn">
+                    <p>据《人纪》记载及相关访谈，倪海厦早年师承周左宇医师与徐济民医师。1977年至1981年间，他在周左宇医师门下潜心研习针灸，尽得真传。彼时周医师尚未在台北易经学会开班，故这一段师徒情谊鲜为外界所知。</p>
                 </div>
                 <div class="lang-tw">
-                    <p>倪海廈（Hai-Sha Ni），生於台灣，祖籍浙江瑞安。當世罕見之經方通才，畢生致力於發揚中醫正統。</p>
-                    <p>先生治學，上知天文，下知地理，中知人事。痛心中醫之式微，立誓通過《天紀》、《人紀》、《地紀》三部鉅著，將失落千年的漢唐醫道重現人間。其行醫風格大開大合，常有一劑知、二劑已之神效，後世尊為「倪師」。</p>
+                    <p>據《人紀》記載及相關訪談，倪海廈早年師承周左宇醫師與徐濟民醫師。1977年至1981年間，他在周左宇醫師門下潛心研習針灸，盡得真傳。彼時周醫師尚未在台北易經學會開班，故這一段師徒情誼鮮為外界所知。</p>
                 </div>
                 <div class="lang-jp">
-                    <p>倪海厦（ニ・ハイシャ）、台湾生まれ、祖籍は浙江省瑞安。現代において稀有な「経方」の通才であり、生涯をかけて正統なる中医の発揚に捧げた。</p>
-                    <p>先生の学識は天文から地理、人事に至るまで深く通じていた。中医の衰退を憂い、『天紀』『人紀』『地紀』の三部作を通じて、千年にわたり失われていた漢唐の医道を再び世に蘇らせることを誓った。</p>
+                    <p>記録によれば、倪海厦は周左宇医師と徐済民医師に師事した。1977年から1981年にかけて、周左宇医師のもとで鍼灸を深く研鑽した。当時、周医師はまだ公に講義を行っていなかったため、この師弟関係は外部にはあまり知られていなかった。</p>
                 </div>
                 <div class="lang-en">
-                    <p>Master Ni Hai-Sha (1954–2012), a rare polymath of Classical Prescriptions (Jing Fang), dedicated his life to the revival of orthodox Traditional Chinese Medicine.</p>
-                    <p>Author of the <em>Tian Ji</em>, <em>Ren Ji</em>, and <em>Di Ji</em> series, he restored the lost arts of the Han and Tang dynasties. Known for his bold clinical style, he is reverently remembered as "Master Ni."</p>
+                    <p>According to records, Master Ni studied under Dr. Zhou Zuoyu and Dr. Xu Jimin. From 1977 to 1981, he immersed himself in the study of acupuncture under Dr. Zhou's mentorship. As Dr. Zhou had not yet begun public teaching at the time, this close mentorship remained a quiet chapter in his early career.</p>
                 </div>
             </div>
         </section>
