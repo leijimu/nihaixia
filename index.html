@@ -3,65 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>经方大师 倪海厦先生纪念馆 | 1954-2012</title>
+    <title>经方大师 倪海厦先生纪念馆</title>
     <meta name="description" content="纪念倪海厦（Hai-Sha Ni）先生，传承汉唐中医，发扬经方绝学。">
     <style>
         /* ================= 基础设置：古风配色 ================= */
         :root {
-            --bg-paper: #f4f0e6;       /* 陈旧宣纸色 */
-            --ink-black: #2c2c2c;      /* 松烟墨 */
-            --ink-light: #5e5e5e;      /* 淡墨 */
-            --cinnabar: #9e2a2b;       /* 朱砂红 (用于印章和强调) */
-            --border-color: #8c8c8c;   /* 边框灰 */
-            --wood-brown: #4a3b32;     /* 檀木褐 */
+            --bg-paper: #f0efe9;       /* 更沉稳的旧纸色 */
+            --ink-black: #1a1a1a;      /* 极深墨色 */
+            --ink-grey: #555555;       /* 次级文字 */
+            --cinnabar: #8a2324;       /* 更加暗沉的朱砂红 (肃穆) */
+            --border-line: #dcdcdc;    /* 极淡的边框 */
         }
 
         body {
             margin: 0;
             padding: 0;
-            /* 优先使用楷体，其次宋体，营造书法感 */
-            font-family: "Kaiti", "STKaiti", "KaiTi", "BiauKai", "Adobe Kaiti Std", "Songti SC", serif;
+            /* 字体栈：优先宋体/楷体，衬线体更具书卷气 */
+            font-family: "Kaiti", "STKaiti", "KaiTi", "Songti SC", "Noto Serif SC", serif;
             background-color: var(--bg-paper);
             color: var(--ink-black);
-            line-height: 2;
-            /* 添加细腻的纸张噪点纹理 */
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+            line-height: 2.2; /* 增加行高，更从容 */
+            /* 纸张纹理 */
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
         }
 
-        a { text-decoration: none; color: inherit; border-bottom: 1px dashed transparent; transition: 0.3s; }
-        a:hover { color: var(--cinnabar); border-bottom-color: var(--cinnabar); }
+        /* 全局淡入动画 */
+        body { animation: fadeIn 1.5s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        /* 全局容器：模拟书页边框 */
         .main-wrapper {
-            max-width: 1000px;
+            max-width: 900px;
             margin: 0 auto;
-            padding: 40px;
+            padding: 60px 40px;
             min-height: 100vh;
             box-sizing: border-box;
-            border-left: 1px solid rgba(0,0,0,0.1);
-            border-right: 1px solid rgba(0,0,0,0.1);
-            background: #fffdf5;
-            box-shadow: 0 0 50px rgba(0,0,0,0.05);
+            background: #fffdf9;
+            box-shadow: 0 0 80px rgba(0,0,0,0.03); /* 极柔和的光晕 */
+            border: 1px solid rgba(0,0,0,0.05);
         }
 
-        /* ================= 1. 英雄区域 (竖排设计) ================= */
+        /* ================= 1. 英雄区域 (遗像与名讳) ================= */
         .hero-section {
-            padding: 60px 0 80px;
+            padding: 40px 0 80px;
             display: flex;
             flex-direction: column;
             align-items: center;
             position: relative;
-            border-bottom: 3px double var(--border-color); /* 文武线 */
         }
 
-        /* 照片框：更庄重的矩形 */
+        /* 照片框：去掉复杂边框，仅保留极细线 */
         .portrait-frame {
             width: 160px;
-            height: 200px; /* 长方形更像遗像或画像 */
-            padding: 10px;
-            border: 1px solid var(--ink-light);
-            outline: 1px solid var(--ink-light);
-            outline-offset: 5px;
+            height: 200px;
+            padding: 8px;
+            border: 1px solid rgba(0,0,0,0.1);
             margin-bottom: 40px;
             background: #fff;
         }
@@ -70,186 +65,186 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            /* 使用黑白滤镜增加肃穆感，鼠标悬停恢复彩色 */
             filter: grayscale(100%); 
-            transition: filter 0.5s;
-            background-color: #eee;
+            transition: filter 0.8s ease; /* 更慢的过渡 */
+            background-color: #f0f0f0;
+            /* 使用您的图片源 */
             background-image: url('https://raw.githubusercontent.com/leijimu/nihaixia/refs/heads/main/nihaixia-wb.jpg');
             background-size: cover;
             background-position: top center;
         }
-        .portrait-img:hover { filter: grayscale(0%); }
+        
+        /* 悬停时恢复极淡的色彩，保持肃穆，不过分艳丽 */
+        .portrait-img:hover { filter: grayscale(30%); }
 
-        /* 名字：竖排 */
+        /* 名字：更加大气 */
         .master-name {
-            font-size: 3.5rem;
-            letter-spacing: 0.5em;
+            font-size: 3.2rem;
+            letter-spacing: 0.6em;
             margin: 20px 0;
-            font-weight: bold;
-            writing-mode: vertical-rl; /* 竖排 */
+            font-weight: normal; /* 宋体不加粗更显清雅 */
+            writing-mode: vertical-rl;
             text-orientation: upright;
             color: var(--ink-black);
         }
 
         .life-dates {
             font-family: "Songti SC", serif;
-            font-size: 1.1rem;
-            color: var(--ink-light);
-            margin-top: 20px;
-            letter-spacing: 2px;
-        }
-
-        /* 印章样式 */
-        .seal {
-            display: inline-block;
-            width: 2rem;
-            height: 2rem;
-            line-height: 2rem;
-            background-color: var(--cinnabar);
-            color: #fff;
             font-size: 1rem;
-            text-align: center;
-            border-radius: 4px;
-            font-family: "Songti SC", serif; /* 印章通常用篆体，这里用宋体代替 */
-            margin-right: 0.5rem;
-            font-weight: normal;
-            box-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+            color: var(--ink-grey);
+            margin-top: 30px;
+            letter-spacing: 4px;
+            border-top: 1px solid var(--border-line);
+            padding-top: 10px;
         }
 
-        /* ================= 2. 内容板块 ================= */
+        /* ================= 2. 通用版块设置 ================= */
         .content-section {
-            padding: 60px 20px;
+            padding: 50px 0;
             text-align: center;
         }
 
-        /* 标题样式：两侧加横线 */
+        /* 标题：极简线条 */
         .section-header {
-            font-size: 1.8rem;
-            margin-bottom: 40px;
-            color: var(--wood-brown);
+            font-size: 1.5rem;
+            margin-bottom: 50px;
+            color: var(--cinnabar); /* 标题使用朱砂色 */
             display: flex;
             align-items: center;
             justify-content: center;
+            font-weight: normal;
         }
+
+        /* 标题两侧的线条 */
         .section-header::before, .section-header::after {
             content: "";
             display: block;
-            width: 50px;
+            width: 30px;
             height: 1px;
-            background: var(--border-color);
+            background: var(--border-line);
             margin: 0 20px;
         }
 
         .bio-text {
-            max-width: 700px;
-            margin: 0 auto 30px;
-            font-size: 1.2rem;
-            text-align: justify;
-            text-indent: 2em; /* 首行缩进 */
+            max-width: 680px;
+            margin: 0 auto;
+            font-size: 1.15rem;
+            text-align: justify; /* 两端对齐 */
+            text-indent: 2em;
+            color: #333;
         }
+        
+        .bio-text p { margin-bottom: 1.5em; }
 
-        /* ================= 3. 著作展示 (卡片改为线框) ================= */
+        /* ================= 3. 三才绝学 (纯展示) ================= */
         .books-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 三列等宽 */
+            gap: 30px;
+            margin-top: 20px;
+            border-top: 1px solid var(--border-line);
+            border-bottom: 1px solid var(--border-line);
+            padding: 40px 0;
+        }
+
+        .book-col {
             display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 40px;
-            margin-top: 40px;
+            flex-direction: column;
+            align-items: center;
         }
 
-        .book-panel {
-            flex: 1;
-            min-width: 260px;
-            max-width: 300px;
-            border: 1px solid var(--border-color);
-            padding: 30px 20px;
-            position: relative;
-            background: transparent;
-            transition: all 0.3s;
-        }
-
-        /* 内边框，制造双线效果 */
-        .book-panel::after {
-            content: "";
-            position: absolute;
-            top: 5px; left: 5px; right: 5px; bottom: 5px;
-            border: 1px solid rgba(0,0,0,0.1);
-            pointer-events: none;
-        }
-
-        .book-panel:hover {
-            border-color: var(--cinnabar);
-            background: #fff;
+        /* 汉字圆形装饰 */
+        .book-icon {
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            border: 1px solid var(--cinnabar);
+            border-radius: 50%;
+            color: var(--cinnabar);
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            font-family: "Kaiti", serif;
         }
 
         .book-title {
-            font-size: 2rem;
+            font-size: 1.4rem;
             margin-bottom: 15px;
-            font-weight: bold;
-            color: var(--wood-brown);
+            color: var(--ink-black);
         }
 
         .book-desc {
-            font-size: 1rem;
-            color: var(--ink-light);
+            font-size: 0.95rem;
+            color: var(--ink-grey);
+            line-height: 1.8;
         }
+        
+        .book-desc p { margin: 4px 0; }
 
-        /* 阅读按钮：古风按钮 */
-        .read-btn {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 8px 25px;
-            border: 1px solid var(--cinnabar);
-            color: var(--cinnabar);
-            font-size: 0.9rem;
-        }
-        .read-btn:hover {
-            background-color: var(--cinnabar);
-            color: #fff;
-        }
-
-        /* ================= 4. 语录 (竖排背景) ================= */
+        /* ================= 4. 语录 (留白) ================= */
         .motto-section {
-            margin: 60px 0;
-            padding: 60px;
-            background-color: #efece4;
-            border-top: 1px solid var(--border-color);
-            border-bottom: 1px solid var(--border-color);
+            margin: 80px 0 40px;
             text-align: center;
         }
 
         .motto-text {
             font-size: 1.6rem;
-            font-weight: bold;
             color: var(--ink-black);
-            /* 尝试竖排，如果在手机上太窄则会自动换行 */
             writing-mode: vertical-rl;
             text-orientation: upright;
             margin: 0 auto;
-            height: 200px; /* 控制竖排高度 */
-            line-height: 3rem;
-            letter-spacing: 0.3rem;
+            height: 220px;
+            letter-spacing: 0.4rem;
+            border-right: 1px solid var(--border-line); /* 右侧加一条极细线作为视觉重心 */
+            padding-right: 20px;
         }
 
         /* ================= 5. 页脚 ================= */
         footer {
             text-align: center;
-            padding-top: 40px;
-            border-top: 3px double var(--border-color);
+            padding-top: 60px;
             font-size: 0.9rem;
-            color: var(--ink-light);
+            color: #999;
         }
-        footer a { margin: 0 10px; }
+        
+        .footer-seal {
+            display: inline-block;
+            border: 1px solid #ccc;
+            padding: 2px 8px;
+            font-size: 0.8rem;
+            margin-bottom: 15px;
+            border-radius: 2px;
+            letter-spacing: 2px;
+        }
 
         /* ================= 移动端适配 ================= */
         @media (max-width: 768px) {
             .main-wrapper { padding: 20px; border: none; box-shadow: none; }
             .hero-section { padding: 40px 0; }
-            .master-name { font-size: 2.5rem; margin: 10px 0; writing-mode: horizontal-tb; letter-spacing: 0.2em; }
-            .portrait-frame { width: 140px; height: 180px; }
-            .motto-text { writing-mode: horizontal-tb; height: auto; font-size: 1.3rem; }
-            .section-header { font-size: 1.5rem; }
-            .section-header::before, .section-header::after { width: 30px; }
+            
+            /* 移动端改为横排，避免排版错乱 */
+            .master-name { 
+                font-size: 2.2rem; 
+                writing-mode: horizontal-tb; 
+                letter-spacing: 0.3em; 
+                margin-top: 20px;
+            }
+            
+            .books-container {
+                grid-template-columns: 1fr; /* 单列 */
+                gap: 50px;
+            }
+            
+            .motto-text { 
+                writing-mode: horizontal-tb; 
+                height: auto; 
+                font-size: 1.3rem; 
+                border-right: none;
+                border-bottom: 1px solid var(--border-line);
+                padding-bottom: 20px;
+                padding-right: 0;
+            }
+
+            .section-header::before, .section-header::after { width: 20px; }
         }
     </style>
 </head>
@@ -257,72 +252,61 @@
 
     <div class="main-wrapper">
         
-        <!-- 1. 头部 / 英雄区域 -->
+        <!-- 1. 头部 -->
         <header class="hero-section">
-            <!-- 遗像框 -->
             <div class="portrait-frame">
                 <div class="portrait-img"></div>
             </div>
-            
-            <!-- 竖排名字 -->
             <div class="master-name">倪海厦</div>
-            
-            <!-- 生卒年 -->
-            <div class="life-dates">一九五四 —— 二〇一二</div>
+            <div class="life-dates">1954 - 2012</div>
         </header>
 
-        <!-- 2. 传记简介 -->
+        <!-- 2. 简介 -->
         <section class="content-section">
-            <div class="section-header">
-                <span class="seal">传</span> 一代宗师
-            </div>
+            <div class="section-header">宗师生平</div>
             <div class="bio-text">
-                <p>倪海厦（Hai-Sha Ni），祖籍浙江瑞安，生于台湾。当世罕见之“经方通才”，毕生致力于发扬中医正统。</p>
-                <p>先生治学，上知天文，下知地理，中知人事。痛心中医之式微，立誓通过《人纪》、《天纪》、《地纪》三部巨著，将失落千年的汉唐医道重现人间。其行医风格大开大合，常有一剂知、二剂已之神效，后世尊为“倪师”。</p>
+                <p>倪海厦（Hai-Sha Ni），生于台湾，祖籍浙江瑞安。当世罕见之经方通才，毕生致力于发扬中医正统。</p>
+                <p>先生治学，上知天文，下知地理，中知人事。痛心中医之式微，立誓通过《天纪》、《人纪》、《地纪》三部巨著，将失落千年的汉唐医道重现人间。其行医风格大开大合，常有一剂知、二剂已之神效，后世尊为“倪师”。</p>
             </div>
         </section>
 
-        <!-- 3. 三才著作 -->
+        <!-- 3. 三才 (纯净版) -->
         <section class="content-section">
-            <div class="section-header">
-                <span class="seal">书</span> 三才绝学
-            </div>
-            
             <div class="books-container">
-                <!-- 天纪 -->
-                <div class="book-panel">
+                <!-- 天 -->
+                <div class="book-col">
+                    <div class="book-icon">天</div>
                     <div class="book-title">天纪</div>
                     <div class="book-desc">
-                        <p>运用易经与紫微斗数</p>
-                        <p>推演宇宙气运与个人命理</p>
+                        <p>易经命理</p>
+                        <p>推演气运</p>
                         <p>以明天道</p>
                     </div>
                 </div>
-
-                <!-- 人纪 (核心) -->
-                <div class="book-panel" style="border-color: var(--ink-light);">
-                    <div class="book-title" style="color: var(--cinnabar);">人纪</div>
+                <!-- 人 -->
+                <div class="book-col">
+                    <div class="book-icon">人</div>
+                    <div class="book-title">人纪</div>
                     <div class="book-desc">
-                        <p>针灸 本草 内经 伤寒 金匮</p>
-                        <p>五大经典 完整传承</p>
+                        <p>五大经典</p>
+                        <p>针药并施</p>
                         <p>以定人事</p>
                     </div>
-                    <a href="/categories/人纪/" class="read-btn">进入经方文库</a>
                 </div>
-
-                <!-- 地纪 -->
-                <div class="book-panel">
+                <!-- 地 -->
+                <div class="book-col">
+                    <div class="book-icon">地</div>
                     <div class="book-title">地纪</div>
                     <div class="book-desc">
-                        <p>堪舆风水 实地考证</p>
-                        <p>山川河流 环境布局</p>
+                        <p>堪舆风水</p>
+                        <p>实地考证</p>
                         <p>以识地利</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- 4. 语录 (模拟条幅) -->
+        <!-- 4. 语录 -->
         <section class="motto-section">
             <div class="motto-text">
                 经方者 中医之灵魂<br>
@@ -332,17 +316,8 @@
 
         <!-- 5. 页脚 -->
         <footer>
-            <p>
-                <a href="/archives/">全站文章</a> 
-                <span style="color:#ccc">|</span> 
-                <a href="/categories/汉唐医案/">临床医案</a> 
-                <span style="color:#ccc">|</span> 
-                <a href="mailto:admin@nihaixia.xyz">联系我们</a>
-            </p>
-            <p style="margin-top: 20px;">
-                薪火相传 · 生生不息<br>
-                &copy; 2025 倪海厦中医传承网
-            </p>
+            <div class="footer-seal">薪火相传</div>
+            <p>&copy; 倪海厦中医纪念馆</p>
         </footer>
 
     </div>
