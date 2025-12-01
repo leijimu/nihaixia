@@ -1,10 +1,60 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" prefix="og: http://ogp.me/ns#">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>经方大师 倪海厦先生纪念馆 | Memorial of Master Ni Hai-Sha</title>
-    <meta name="description" content="Memorial page for TCM Master Ni Hai-Sha (1954-2012).">
+    
+    <!-- ================= SEO 核心设置 ================= -->
+    <title>倪海厦纪念馆 | 汉唐中医经方宗师 | Ni Hai-Sha Memorial</title>
+    
+    <!-- 描述：包含核心价值主张，吸引点击 -->
+    <meta name="description" content="倪海厦（Ni Hai-Sha, 1954-2012）纪念网站。传承汉唐中医，发扬经方绝学。介绍倪师生平及其《天纪》、《人纪》、《地纪》三部学术巨著。Memorial page dedicated to TCM Master Ni Hai-Sha and his legacy in Classical Prescriptions.">
+    
+    <!-- 关键词：覆盖多语言和相关术语 -->
+    <meta name="keywords" content="倪海厦, 倪海廈, Ni Hai-Sha, 汉唐中医, 经方, 伤寒论, 金匮要略, 人纪, 天纪, 地纪, TCM, Classical Prescriptions, Acupuncture, Chinese Medicine, ニ・ハイシャ, 漢方">
+    
+    <!-- 作者与版权 -->
+    <meta name="author" content="Ni Hai-Sha Memorial">
+    <meta name="robots" content="index, follow">
+
+    <!-- ================= 社交媒体分享 (Open Graph) ================= -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="经方大师 倪海厦先生纪念馆 | Ni Hai-Sha Memorial">
+    <meta property="og:description" content="薪火相传，生生不息。纪念经方通才倪海厦先生，重现汉唐医道。">
+    <meta property="og:image" content="https://raw.githubusercontent.com/leijimu/nihaixia/refs/heads/main/nihaixia-wb.jpg">
+    <meta property="og:url" content="https://nihaixia.xyz"> <!-- 请替换为您的实际域名 -->
+    <meta property="og:site_name" content="倪海厦纪念馆">
+    <meta property="og:locale" content="zh_CN">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:locale:alternate" content="zh_TW">
+
+    <!-- ================= 结构化数据 (Schema.org JSON-LD) ================= -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Ni Hai-Sha",
+      "alternateName": ["倪海厦", "倪海廈", "Hai-Sha Ni"],
+      "description": "Renowned Traditional Chinese Medicine (TCM) master, dedicated to the revival of Classical Prescriptions (Jing Fang). Author of the Tian Ji, Ren Ji, and Di Ji series.",
+      "birthDate": "1954",
+      "deathDate": "2012",
+      "jobTitle": "TCM Physician",
+      "nationality": "American",
+      "knowsAbout": [
+        "Traditional Chinese Medicine",
+        "Acupuncture",
+        "I-Ching",
+        "Feng Shui",
+        "Shanghan Lun"
+      ],
+      "image": "https://raw.githubusercontent.com/leijimu/nihaixia/refs/heads/main/nihaixia-wb.jpg",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://nihaixia.xyz"
+      }
+    }
+    </script>
+
     <style>
         /* ================= 基础设置 ================= */
         :root {
@@ -18,10 +68,7 @@
         body {
             margin: 0;
             padding: 0;
-            /* 泛东亚衬线字体栈：涵盖简繁日 */
-            font-family: "Kaiti", "STKaiti", "KaiTi", "Songti SC", "Noto Serif SC", 
-                         "PMingLiU", "MingLiU", /* 繁体 */
-                         "Yu Mincho", "Hiragino Mincho ProN", serif; /* 日文 */
+            font-family: "Kaiti", "STKaiti", "KaiTi", "Songti SC", "Noto Serif SC", "PMingLiU", "MingLiU", "Yu Mincho", "Hiragino Mincho ProN", serif;
             background-color: var(--bg-paper);
             color: var(--ink-black);
             line-height: 2.2;
@@ -29,7 +76,7 @@
             transition: all 0.5s ease;
         }
 
-        /* 语言切换逻辑：默认隐藏所有，根据 body 类名显示对应语言 */
+        /* 语言切换逻辑 */
         [class^="lang-"] { display: none; }
         
         body.show-cn .lang-cn { display: block; }
@@ -44,10 +91,9 @@
         body.show-jp .lang-jp { display: block; }
         body.show-jp .lang-jp-inline { display: inline; }
 
-        /* 英文模式下的字体覆盖：使用标准衬线体，避免楷体显示英文 */
         body.show-en {
             font-family: "Georgia", "Times New Roman", "Songti SC", serif;
-            letter-spacing: 0.05em; /* 英文不需要太宽的字间距 */
+            letter-spacing: 0.05em;
         }
 
         .main-wrapper {
@@ -61,7 +107,6 @@
             position: relative;
         }
 
-        /* ================= 语言切换器 ================= */
         .lang-switch {
             position: absolute;
             top: 20px;
@@ -115,19 +160,20 @@
         
         .portrait-img:hover { filter: grayscale(30%); }
 
-        .master-name {
+        /* H1: 语义化优化 */
+        h1.master-name {
             font-size: 3.2rem;
             letter-spacing: 0.5em;
             margin: 20px 0;
             font-weight: normal;
             color: var(--ink-black);
-            /* 默认竖排 (CN, TW, JP) */
             writing-mode: vertical-rl;
             text-orientation: upright;
+            /* 重置 H1 默认样式 */
+            line-height: 1.2; 
         }
 
-        /* 英文模式下强制横排 */
-        body.show-en .master-name {
+        body.show-en h1.master-name {
             writing-mode: horizontal-tb;
             font-size: 2.5rem;
             letter-spacing: 0.1em;
@@ -153,16 +199,18 @@
             text-align: center;
         }
 
-        .section-header {
+        /* H2: 语义化优化 */
+        h2.section-header {
             font-size: 1.5rem;
             margin-bottom: 50px;
             color: var(--cinnabar);
             display: flex;
             align-items: center;
             justify-content: center;
+            font-weight: normal;
         }
 
-        .section-header::before, .section-header::after {
+        h2.section-header::before, h2.section-header::after {
             content: "";
             display: block;
             width: 30px;
@@ -178,13 +226,12 @@
             text-align: justify;
             color: #333;
         }
-        /* 中文日文首行缩进，英文不缩进 */
+        
         body.show-cn .bio-text, body.show-tw .bio-text, body.show-jp .bio-text { text-indent: 2em; }
         body.show-en .bio-text { text-indent: 0; }
         
         .bio-text p { margin-bottom: 1.5em; }
 
-        /* 三才布局 */
         .books-container {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -213,13 +260,15 @@
             font-family: "Kaiti", serif;
         }
         
-        /* 英文模式下 Icon 字体稍小 */
         body.show-en .book-icon { font-size: 1rem; font-family: serif; font-weight: bold; }
 
-        .book-title {
+        /* H3: 语义化优化 */
+        h3.book-title {
             font-size: 1.4rem;
             margin-bottom: 15px;
+            margin-top: 0;
             color: var(--ink-black);
+            font-weight: normal;
         }
 
         .book-desc {
@@ -238,7 +287,6 @@
         .motto-text {
             font-size: 1.6rem;
             color: var(--ink-black);
-            /* 默认竖排 */
             writing-mode: vertical-rl;
             text-orientation: upright;
             height: 220px;
@@ -247,7 +295,6 @@
             padding-right: 20px;
         }
 
-        /* 英文横排处理 */
         body.show-en .motto-text {
             writing-mode: horizontal-tb;
             height: auto;
@@ -277,19 +324,18 @@
             letter-spacing: 2px;
         }
 
-        /* 移动端适配 */
         @media (max-width: 768px) {
             .main-wrapper { padding: 20px 10px; }
             .lang-switch { top: 10px; right: 10px; }
             
-            .master-name { 
+            h1.master-name { 
                 font-size: 2.2rem; 
                 writing-mode: horizontal-tb; 
                 letter-spacing: 0.3em; 
                 margin-top: 20px;
             }
             
-            body.show-en .master-name { font-size: 1.8rem; }
+            body.show-en h1.master-name { font-size: 1.8rem; }
 
             .books-container { grid-template-columns: 1fr; gap: 40px; }
             
@@ -321,28 +367,30 @@
         <!-- 1. 头部 -->
         <header class="hero-section">
             <div class="portrait-frame">
-                <div class="portrait-img"></div>
+                <!-- ALT 属性 SEO 优化 -->
+                <div class="portrait-img" role="img" aria-label="Ni Hai-Sha (倪海厦) portrait"></div>
             </div>
             
-            <!-- 名字 -->
-            <div class="master-name">
+            <!-- 使用 H1 标签 -->
+            <h1 class="master-name">
                 <span class="lang-cn">倪海厦</span>
                 <span class="lang-tw">倪海廈</span>
                 <span class="lang-jp">倪海厦</span>
                 <span class="lang-en">Ni Hai-Sha</span>
-            </div>
+            </h1>
             
             <div class="life-dates">1954 - 2012</div>
         </header>
 
         <!-- 2. 简介 -->
         <section class="content-section">
-            <div class="section-header">
+            <!-- 使用 H2 标签 -->
+            <h2 class="section-header">
                 <span class="lang-cn">宗师生平</span>
                 <span class="lang-tw">宗師生平</span>
                 <span class="lang-jp">略歴</span>
                 <span class="lang-en">Biography</span>
-            </div>
+            </h2>
             
             <div class="bio-text">
                 <!-- 简体 -->
@@ -382,12 +430,13 @@
                         <span class="lang-jp-inline">天</span>
                         <span class="lang-en-inline">Heaven</span>
                     </div>
-                    <div class="book-title">
+                    <!-- 使用 H3 标签 -->
+                    <h3 class="book-title">
                         <span class="lang-cn">天纪</span>
                         <span class="lang-tw">天紀</span>
                         <span class="lang-jp">天紀</span>
                         <span class="lang-en">Tian Ji</span>
-                    </div>
+                    </h3>
                     <div class="book-desc">
                         <span class="lang-cn">易经命理<br>推演气运<br>以明天道</span>
                         <span class="lang-tw">易經命理<br>推演氣運<br>以明天道</span>
@@ -403,12 +452,12 @@
                         <span class="lang-jp-inline">人</span>
                         <span class="lang-en-inline">Human</span>
                     </div>
-                    <div class="book-title">
+                    <h3 class="book-title">
                         <span class="lang-cn">人纪</span>
                         <span class="lang-tw">人紀</span>
                         <span class="lang-jp">人紀</span>
                         <span class="lang-en">Ren Ji</span>
-                    </div>
+                    </h3>
                     <div class="book-desc">
                         <span class="lang-cn">五大经典<br>针药并施<br>以定人事</span>
                         <span class="lang-tw">五大經典<br>針藥並施<br>以定人事</span>
@@ -424,12 +473,12 @@
                         <span class="lang-jp-inline">地</span>
                         <span class="lang-en-inline">Earth</span>
                     </div>
-                    <div class="book-title">
+                    <h3 class="book-title">
                         <span class="lang-cn">地纪</span>
                         <span class="lang-tw">地紀</span>
                         <span class="lang-jp">地紀</span>
                         <span class="lang-en">Di Ji</span>
-                    </div>
+                    </h3>
                     <div class="book-desc">
                         <span class="lang-cn">堪舆风水<br>实地考证<br>以识地利</span>
                         <span class="lang-tw">堪輿風水<br>實地考證<br>以識地利</span>
@@ -470,22 +519,24 @@
     </div>
 
     <script>
-        // 简单的语言切换脚本
         function setLang(lang) {
-            // 1. 更新 Body 类名
             document.body.className = 'show-' + lang;
-            
-            // 2. 更新按钮激活状态
             document.querySelectorAll('.lang-btn').forEach(btn => {
                 btn.classList.remove('active');
             });
             document.getElementById('btn-' + lang).classList.add('active');
-
-            // 3. (可选) 保存偏好到本地存储
             localStorage.setItem('preferred-lang', lang);
+            
+            // 动态更新标题，利于用户体验（虽然爬虫可能只看默认的）
+            const titles = {
+                'cn': '倪海厦纪念馆 | 汉唐中医',
+                'tw': '倪海廈紀念館 | 漢唐中醫',
+                'jp': '倪海厦記念館 | 漢方中医',
+                'en': 'Ni Hai-Sha Memorial | TCM'
+            };
+            if(titles[lang]) document.title = titles[lang];
         }
 
-        // 初始化：检查本地存储或默认使用简中
         document.addEventListener('DOMContentLoaded', () => {
             const savedLang = localStorage.getItem('preferred-lang') || 'cn';
             setLang(savedLang);
