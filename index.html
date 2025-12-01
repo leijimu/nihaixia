@@ -10,7 +10,7 @@
     <meta name="keywords" content="倪海厦, Ni Hai-Sha, 汉唐中医, 经方, 人纪, 佛州针灸师, 斯坦福演讲, 周左宇, 徐济民">
     <meta name="author" content="Ni Hai-Sha Memorial">
     
-    <meta property="og:image" content="https://raw.githubusercontent.com/leijimu/nihaixia/refs/heads/main/nihaixia-wb.jpg">
+    <meta property="og:image" content="https://raw.githubusercontent.com/leijimu/nihaixia/main/nihaixia-wb.jpg">
 
     <!-- 字体优化 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -106,6 +106,7 @@
             display: flex; 
             justify-content: center;
             align-items: center;
+            overflow: hidden; /* 防止图片溢出 */
         }
 
         .portrait-img {
@@ -116,6 +117,8 @@
             filter: grayscale(100%); 
             transition: filter 0.5s ease;
             display: block;
+            /* 修复部分安卓机渲染问题 */
+            max-width: 100%; 
         }
         .portrait-frame:hover .portrait-img,
         .portrait-frame:active .portrait-img { filter: grayscale(0%); }
@@ -256,9 +259,11 @@
 
         <header class="hero-section">
             <div class="portrait-frame">
-                <img src="https://raw.githubusercontent.com/leijimu/nihaixia/refs/heads/main/nihaixia-wb.jpg" 
+                <!-- 修复链接：去除 refs/heads/，使用标准 Raw 链接 -->
+                <img src="https://raw.githubusercontent.com/leijimu/nihaixia/main/nihaixia-wb.jpg" 
                      class="portrait-img" 
-                     alt="Ni Hai-Sha (倪海厦) Portrait">
+                     alt="Ni Hai-Sha (倪海厦) Portrait"
+                     onerror="this.style.backgroundColor='#e0e0e0'; this.alt='Image not found';">
             </div>
             
             <h1 class="master-name">
