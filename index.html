@@ -2,31 +2,26 @@
 <html lang="zh-CN" prefix="og: http://ogp.me/ns#">
 <head>
     <meta charset="UTF-8">
-    <!-- 视口设置优化：禁止用户缩放可能影响布局，但为了无障碍通常不禁止，这里保持标准 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0">
     
     <title>倪海厦纪念馆 | 汉唐中医经方宗师 | Ni Hai-Sha Memorial</title>
     
-    <!-- SEO Meta Tags (保持不变) -->
-    <meta name="description" content="倪海厦（Ni Hai-Sha, 1954-2012）纪念网站。传承汉唐中医，发扬经方绝学。Memorial page for TCM Master Ni Hai-Sha.">
-    <meta name="keywords" content="倪海厦, 倪海廈, Ni Hai-Sha, 汉唐中医, 经方, TCM, Classical Prescriptions">
+    <meta name="description" content="倪海厦（Ni Hai-Sha, 1954-2012）纪念网站。传承汉唐中医，发扬经方绝学。">
+    <meta name="keywords" content="倪海厦, Ni Hai-Sha, 汉唐中医, 经方, TCM">
     <meta name="author" content="Ni Hai-Sha Memorial">
     
-    <!-- Open Graph & Schema (保持不变，此处省略以节省篇幅，请保留您上一版的内容) -->
     <meta property="og:image" content="https://raw.githubusercontent.com/leijimu/nihaixia/refs/heads/main/nihaixia-wb.jpg">
 
-    <!-- ================= 字体优化关键点：预加载 Google Fonts ================= -->
+    <!-- 字体优化 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- 引入 Noto Serif SC (宋体) 用于正文，Ma Shan Zheng (书法体) 用于标题(可选，此处仅用宋体即可保持克制) -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;700&family=Noto+Serif+TC:wght@300;400;700&family=Noto+Serif+JP:wght@300;400;700&display=swap" rel="stylesheet">
 
     <style>
-        /* ================= 基础设置 ================= */
         :root {
             --bg-paper: #f0efe9;
             --ink-black: #1a1a1a;
-            --ink-grey: #444444; /* 稍微加深灰色，提升手机端对比度 */
+            --ink-grey: #444;
             --cinnabar: #8a2324;
             --border-line: #dcdcdc;
         }
@@ -34,42 +29,26 @@
         body {
             margin: 0;
             padding: 0;
-            
-            /* --- 字体栈核心优化 --- */
-            /* 1. 英文优先 Georgia (衬线) */
-            /* 2. 中文优先 Noto Serif (云字体) */
-            /* 3. iOS 优先 Songti SC */
-            /* 4. 兜底 serif */
-            font-family: "Georgia", "Noto Serif SC", "Noto Serif TC", "Noto Serif JP", "Songti SC", "STSong", "SimSun", "Times New Roman", serif;
-            
+            font-family: "Georgia", "Noto Serif SC", "Noto Serif TC", "Noto Serif JP", "Songti SC", "STSong", serif;
             background-color: var(--bg-paper);
             color: var(--ink-black);
-            
-            /* 移动端行高优化：手机屏幕窄，行高适当减小一点点以免太散，但保持由书卷气 */
-            line-height: 1.8; 
-            
+            line-height: 1.8;
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
-            
-            /* 移动端渲染优化 */
-            -webkit-font-smoothing: antialiased; /* iOS 字体平滑 */
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-text-size-adjust: 100%; /* 禁止 iOS 横屏自动放大字体 */
-            text-rendering: optimizeLegibility; /* 开启连字和字距优化 */
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* 针对标题使用楷体（如果系统有），没有则回退到宋体，保持庄重 */
+        /* 标题使用楷体风格 */
         h1, h2, h3, .book-icon {
-            font-family: "Kaiti", "STKaiti", "KaiTi", "Adobe Kaiti Std", "Noto Serif SC", serif;
-            font-weight: normal; /* 传统字体通常不加粗 */
+            font-family: "Kaiti", "STKaiti", "KaiTi", "Noto Serif SC", serif;
+            font-weight: normal;
         }
-        
-        /* 英文模式字体微调 */
+
         body.show-en {
             font-family: "Georgia", "Times New Roman", "Noto Serif SC", serif;
             letter-spacing: 0.02em;
         }
 
-        /* 布局相关 (保持原有逻辑) */
+        /* 语言切换显示逻辑 */
         [class^="lang-"] { display: none; }
         body.show-cn .lang-cn { display: block; } body.show-cn .lang-cn-inline { display: inline; }
         body.show-tw .lang-tw { display: block; } body.show-tw .lang-tw-inline { display: inline; }
@@ -87,7 +66,7 @@
             position: relative;
         }
 
-        /* ================= 移动端特定优化 ================= */
+        /* 语言切换器 */
         .lang-switch {
             position: absolute;
             top: 20px;
@@ -95,55 +74,65 @@
             font-size: 0.85rem;
             color: var(--ink-grey);
             z-index: 100;
-            /* 增加触摸区域 */
             padding: 10px; 
         }
-        
         .lang-btn {
             cursor: pointer;
-            margin: 0 6px; /* 增加间距 */
+            margin: 0 6px;
             padding-bottom: 2px;
             border-bottom: 1px solid transparent;
             transition: all 0.3s;
         }
-        
         .lang-btn:hover, .lang-btn.active {
             color: var(--cinnabar);
             border-bottom-color: var(--cinnabar);
         }
 
+        /* ================= 核心修复：照片与英雄区域 ================= */
         .hero-section {
-            padding: 40px 0 60px;
+            padding: 50px 0 60px; /* 增加顶部空间 */
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
+        /* 1. 照片外框：桌面端默认尺寸 */
         .portrait-frame {
-            width: 140px; /* 手机端稍微调小 */
-            height: 175px;
-            padding: 6px;
-            border: 1px solid rgba(0,0,0,0.1);
-            margin-bottom: 30px;
+            width: 160px;
+            height: 200px;
+            padding: 8px;
+            border: 1px solid rgba(0,0,0,0.1); /* 极细边框 */
             background: #fff;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05); /* 轻微立体感 */
+            margin-bottom: 30px;
+            /* 居中修复 */
+            display: flex; 
+            justify-content: center;
+            align-items: center;
         }
 
+        /* 2. 图片本体：使用 img 标签控制 */
         .portrait-img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: cover; /* 确保填充且不变形 */
+            object-position: top center; /* 确保头部不被裁剪 */
             filter: grayscale(100%); 
-            transition: filter 0.8s ease;
-            background-color: #f0f0f0;
-            background-image: url('https://raw.githubusercontent.com/leijimu/nihaixia/refs/heads/main/nihaixia-wb.jpg');
-            background-size: cover;
-            background-position: top center;
+            transition: filter 0.5s ease;
+            display: block;
         }
 
+        /* 交互：鼠标悬停或手机按住时恢复彩色 */
+        .portrait-frame:hover .portrait-img,
+        .portrait-frame:active .portrait-img { 
+            filter: grayscale(0%); 
+        }
+
+        /* 名字样式 */
         h1.master-name {
-            font-size: 2.8rem; /* 稍微调小 */
-            letter-spacing: 0.4em;
-            margin: 15px 0;
+            font-size: 3.2rem;
+            letter-spacing: 0.5em;
+            margin: 20px 0;
             line-height: 1.2;
             writing-mode: vertical-rl;
             text-orientation: upright;
@@ -152,179 +141,134 @@
 
         body.show-en h1.master-name {
             writing-mode: horizontal-tb;
-            font-size: 2rem;
+            font-size: 2.5rem;
             letter-spacing: 0.05em;
-            text-align: center;
-            padding: 0 10px;
+            border-bottom: 1px solid var(--border-line);
+            padding-bottom: 15px;
         }
 
         .life-dates {
             font-family: "Songti SC", "Noto Serif SC", serif;
-            font-size: 0.95rem;
+            font-size: 1rem;
             color: var(--ink-grey);
             margin-top: 25px;
-            letter-spacing: 3px;
+            letter-spacing: 4px;
             border-top: 1px solid var(--border-line);
             padding-top: 10px;
         }
 
-        /* 内容区域优化 */
-        .content-section {
-            padding: 40px 0;
-            text-align: center;
-        }
+        /* 内容区 */
+        .content-section { padding: 40px 0; text-align: center; }
 
         h2.section-header {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             margin-bottom: 40px;
             color: var(--cinnabar);
             display: flex;
             align-items: center;
             justify-content: center;
         }
-        
         h2.section-header::before, h2.section-header::after {
-            width: 25px; margin: 0 15px;
+            content: ""; display: block; width: 30px; height: 1px;
+            background: var(--border-line); margin: 0 20px;
         }
 
         .bio-text {
-            max-width: 680px;
-            margin: 0 auto;
-            font-size: 1.1rem; /* 手机端保持较大字号以易读 */
-            text-align: justify;
-            color: #222; /* 加深文字 */
-            line-height: 1.9;
+            max-width: 680px; margin: 0 auto;
+            font-size: 1.15rem; text-align: justify;
+            color: #222; line-height: 1.9;
         }
-        
         body.show-cn .bio-text, body.show-tw .bio-text, body.show-jp .bio-text { text-indent: 2em; }
         body.show-en .bio-text { text-indent: 0; }
-        
-        /* 书籍区域 */
+
+        /* 书籍区 */
         .books-container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            margin-top: 20px;
+            display: grid; grid-template-columns: repeat(3, 1fr);
+            gap: 30px; margin-top: 20px;
             border-top: 1px solid var(--border-line);
             border-bottom: 1px solid var(--border-line);
             padding: 40px 0;
         }
-
         .book-col { display: flex; flex-direction: column; align-items: center; }
-
         .book-icon {
             width: 45px; height: 45px; line-height: 45px;
-            border: 1px solid var(--cinnabar);
-            border-radius: 50%;
-            color: var(--cinnabar);
-            font-size: 1.2rem;
-            margin-bottom: 15px;
+            border: 1px solid var(--cinnabar); border-radius: 50%;
+            color: var(--cinnabar); font-size: 1.2rem; margin-bottom: 15px;
         }
+        h3.book-title { font-size: 1.3rem; margin-bottom: 10px; color: var(--ink-black); }
+        .book-desc { font-size: 0.9rem; color: var(--ink-grey); line-height: 1.7; }
 
-        h3.book-title {
-            font-size: 1.25rem;
-            margin-bottom: 10px;
-            color: var(--ink-black);
-        }
-
-        .book-desc {
-            font-size: 0.9rem;
-            color: var(--ink-grey);
-            line-height: 1.7;
-        }
-
-        /* 语录 */
+        /* 语录区 */
         .motto-section {
-            margin: 60px 0 30px;
-            text-align: center;
-            display: flex;
-            justify-content: center;
+            margin: 60px 0 40px; text-align: center;
+            display: flex; justify-content: center;
         }
-
         .motto-text {
-            font-size: 1.5rem;
-            color: var(--ink-black);
-            writing-mode: vertical-rl;
-            text-orientation: upright;
-            height: 200px;
-            letter-spacing: 0.3rem;
-            border-right: 1px solid var(--border-line);
-            padding-right: 20px;
+            font-size: 1.6rem; color: var(--ink-black);
+            writing-mode: vertical-rl; text-orientation: upright;
+            height: 220px; letter-spacing: 0.4rem;
+            border-right: 1px solid var(--border-line); padding-right: 20px;
         }
-
         body.show-en .motto-text {
-            writing-mode: horizontal-tb;
-            height: auto;
-            border-right: none;
-            border-bottom: 1px solid var(--border-line);
-            padding-right: 0;
-            padding-bottom: 20px;
-            max-width: 90%;
+            writing-mode: horizontal-tb; height: auto;
+            border-right: none; border-bottom: 1px solid var(--border-line);
+            padding-right: 0; padding-bottom: 20px; max-width: 600px; font-style: italic;
         }
 
         footer {
-            text-align: center;
-            padding-top: 50px;
-            padding-bottom: 20px; /* 增加底部留白 */
-            font-size: 0.85rem;
-            color: #888;
+            text-align: center; padding-top: 50px; padding-bottom: 30px;
+            font-size: 0.85rem; color: #888;
+        }
+        .footer-seal {
+            display: inline-block; border: 1px solid #ccc;
+            padding: 2px 8px; font-size: 0.8rem; margin-bottom: 15px;
+            border-radius: 2px; letter-spacing: 2px;
         }
 
-        /* ================= 深度移动端媒体查询 ================= */
+        /* ================= 移动端深度适配 ================= */
         @media (max-width: 768px) {
             .main-wrapper { 
                 padding: 20px 15px; 
-                width: 100%;
-                max-width: 100%;
-                box-shadow: none;
-                border: none;
+                width: 100%; max-width: 100%;
+                box-shadow: none; border: none;
             }
-            
-            /* 名字在手机端强制横排，否则太占垂直空间且容易乱 */
+
+            /* 修复1: 手机端照片尺寸微调，防止过大 */
+            .portrait-frame {
+                width: 140px;
+                height: 175px;
+                padding: 6px;
+                margin-bottom: 25px;
+            }
+
+            /* 修复2: 名字强制横排，防止竖排撑破布局 */
             h1.master-name { 
                 font-size: 2.4rem; 
                 writing-mode: horizontal-tb; 
                 letter-spacing: 0.2em; 
-                margin-top: 20px;
+                margin-top: 10px;
+                line-height: 1.4;
             }
-            
-            body.show-en h1.master-name { font-size: 1.8rem; letter-spacing: 0px;}
+            body.show-en h1.master-name { font-size: 1.8rem; letter-spacing: 0px; }
 
-            /* 三才板块：单列显示，增加间距 */
-            .books-container { 
-                grid-template-columns: 1fr; 
-                gap: 50px; 
-                padding: 50px 20px;
-            }
+            /* 布局调整 */
+            .books-container { grid-template-columns: 1fr; gap: 50px; padding: 40px 20px; }
             
-            /* 语录在手机端改为横排 */
             .motto-text { 
-                writing-mode: horizontal-tb; 
-                height: auto; 
-                font-size: 1.3rem; 
-                line-height: 1.6;
-                border-right: none;
-                border-bottom: 1px solid var(--border-line);
-                padding-bottom: 30px;
-                padding-right: 0;
-                width: 80%; /* 限制宽度，自动换行 */
+                writing-mode: horizontal-tb; height: auto; 
+                font-size: 1.35rem; line-height: 1.6;
+                border-right: none; border-bottom: 1px solid var(--border-line);
+                padding-bottom: 30px; padding-right: 0; width: 85%;
             }
 
-            /* 增加段落间距，手机阅读更轻松 */
-            .bio-text p { margin-bottom: 2em; }
-            
-            /* 语言切换按钮加大间距防止误触 */
-            .lang-switch {
-                top: 15px;
-                right: 10px;
-            }
+            .lang-switch { top: 10px; right: 10px; }
             .lang-btn { margin: 0 8px; font-size: 1rem; }
+            
+            h2.section-header::before, h2.section-header::after { width: 20px; margin: 0 10px; }
         }
     </style>
 </head>
-<!-- 默认显示简体中文 -->
 <body class="show-cn">
-    <!-- 页面内容保持不变，复用上一版即可 -->
     <div class="main-wrapper">
         <div class="lang-switch">
             <span class="lang-btn" onclick="setLang('cn')" id="btn-cn">简</span>
@@ -334,9 +278,13 @@
         </div>
 
         <header class="hero-section">
+            <!-- 照片结构修复：使用 img 标签 -->
             <div class="portrait-frame">
-                <div class="portrait-img" role="img" aria-label="Ni Hai-Sha Portrait"></div>
+                <img src="https://raw.githubusercontent.com/leijimu/nihaixia/refs/heads/main/nihaixia-wb.jpg" 
+                     class="portrait-img" 
+                     alt="Ni Hai-Sha (倪海厦) Portrait">
             </div>
+            
             <h1 class="master-name">
                 <span class="lang-cn">倪海厦</span>
                 <span class="lang-tw">倪海廈</span>
