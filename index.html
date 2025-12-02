@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0">
     
-    <title>倪海厦纪念馆 | 汉唐中医经方宗师 | Ni Hai-Sha Memorial</title>
+    <title>倪海厦纪念馆 | 汉唐中医经方宗师 | Ni Hai-Xia Memorial</title>
     
-    <meta name="description" content="倪海厦（Ni Hai-Sha, 1954-2012）纪念网站。生于台湾，旅美经方大师，汉唐中医创办人。致力传承《人纪》绝学。">
-    <meta name="keywords" content="倪海厦, Ni Hai-Sha, 汉唐中医, 经方, 人纪">
-    <meta name="author" content="Ni Hai-Sha Memorial">
+    <meta name="description" content="倪海厦（Ni Hai-Xia, 1954-2012）纪念网站。生于台湾，旅美经方大师，汉唐中医创办人。致力传承《人纪》绝学。">
+    <meta name="keywords" content="倪海厦, Ni Hai-Xia, 汉唐中医, 经方, 人纪">
+    <meta name="author" content="Ni Hai-Xia Memorial">
     
     <meta property="og:image" content="https://raw.githubusercontent.com/leijimu/nihaixia/main/nihaixia-wb.jpg">
 
@@ -179,19 +179,34 @@
         /* 书籍区域 */
         .books-container {
             display: grid; grid-template-columns: repeat(3, 1fr);
-            gap: 30px; margin-top: 20px;
+            gap: 40px; /* 增加间距 */
+            margin-top: 20px;
             border-top: 1px solid var(--border-line);
             border-bottom: 1px solid var(--border-line);
-            padding: 40px 0;
+            padding: 50px 0;
+            align-items: start; /* 顶部对齐 */
         }
         .book-col { display: flex; flex-direction: column; align-items: center; }
+        
         .book-icon {
-            width: 45px; height: 45px; line-height: 45px;
+            width: 50px; height: 50px; line-height: 50px;
             border: 1px solid var(--cinnabar); border-radius: 50%;
-            color: var(--cinnabar); font-size: 1.2rem; margin-bottom: 15px;
+            color: var(--cinnabar); font-size: 1.4rem; margin-bottom: 20px;
+            text-align: center;
         }
-        h3.book-title { font-size: 1.3rem; margin-bottom: 10px; color: var(--ink-black); }
-        .book-desc { font-size: 0.9rem; color: var(--ink-grey); line-height: 1.7; }
+        
+        h3.book-title { font-size: 1.5rem; margin-bottom: 15px; color: var(--ink-black); }
+        
+        /* 优化后的描述文字样式 */
+        .book-desc { 
+            font-size: 0.95rem; 
+            color: #555; /* 稍微深一点的灰色 */
+            line-height: 1.8; 
+            text-align: justify; /* 两端对齐 */
+            max-width: 260px; /* 限制宽度，防止文字太长看著累 */
+        }
+        
+        body.show-en .book-desc { text-align: left; } /* 英文左对齐更好看 */
 
         /* ================= 语录轮播区域 ================= */
         .motto-section {
@@ -254,7 +269,8 @@
             body.show-en h1.master-name { font-size: 1.8rem; letter-spacing: 0px; }
             
             .books-container { grid-template-columns: 1fr; gap: 50px; padding: 40px 20px; }
-            
+            .book-desc { max-width: 100%; padding: 0 10px; } /* 手机端放宽限制 */
+
             #quote-container {
                 font-size: 1.25rem; 
                 line-height: 1.6;
@@ -279,14 +295,14 @@
             <div class="portrait-frame">
                 <img src="https://raw.githubusercontent.com/leijimu/nihaixia/main/nihaixia-wb.jpg" 
                      class="portrait-img" 
-                     alt="Ni Hai-Sha"
+                     alt="Ni Hai-Xia"
                      onerror="this.style.backgroundColor='#e0e0e0'; this.alt='Image not found';">
             </div>
             <h1 class="master-name">
                 <span class="lang-cn">倪海厦</span>
                 <span class="lang-tw">倪海廈</span>
                 <span class="lang-jp">倪海厦</span>
-                <span class="lang-en">Ni Hai-Sha</span>
+                <span class="lang-en">Ni Hai-Xia</span>
             </h1>
             <div class="life-dates">1954 - 2012</div>
         </header>
@@ -312,25 +328,53 @@
                     <p>1990年代に渡米し、「漢唐経方中医診療所」を開設。フロリダ州鍼灸委員会の副委員長を歴任。生涯を通じて現代西洋医学の偏重を強く批判し、正統なる「経方」医学の復興に捧げた。</p>
                 </div>
                 <div class="lang-en">
-                    <p>Ni Hai-Sha (1954–2012) was a master of Traditional Chinese Medicine (TCM) and an expert in Feng Shui. Originally dreaming of being a guitarist, he taught himself medicine to cure his sister.</p>
+                    <p>Ni Hai-Xia (1954–2012) was a master of Traditional Chinese Medicine (TCM) and an expert in Feng Shui. Originally dreaming of being a guitarist, he taught himself medicine to cure his sister.</p>
                     <p>He founded the Han Tang TCM Clinic in the US and served on the Florida Board of Acupuncture. Known for his bold criticism of Western pharmaceutical reliance, he dedicated his life to reviving orthodox "Jing Fang" (Classical Prescriptions).</p>
                 </div>
             </div>
         </section>
 
+        <!-- 三才绝学 (内容扩充版) -->
         <section class="content-section">
             <div class="books-container">
+                <!-- 天纪 -->
                 <div class="book-col">
-                    <div class="book-icon">天</div><h3 class="book-title">天纪</h3>
-                    <div class="book-desc"><span class="lang-cn">易经命理</span><span class="lang-tw">易經命理</span><span class="lang-jp">易経命理</span><span class="lang-en">Astrology</span></div>
+                    <div class="book-icon">天</div>
+                    <h3 class="book-title">
+                        <span class="lang-cn">天纪</span><span class="lang-tw">天紀</span><span class="lang-jp">天紀</span><span class="lang-en">Tian Ji</span>
+                    </h3>
+                    <div class="book-desc">
+                        <div class="lang-cn">运用易经六十四卦与紫微斗数，推演宇宙气运与个人命途。主张“不知命无以为君子”，通过知天命而运筹帷幄，以明天道之无常。</div>
+                        <div class="lang-tw">運用易經六十四卦與紫微斗數，推演宇宙氣運與個人命途。主張「不知命無以為君子」，通過知天命而運籌帷幄，以明天道之無常。</div>
+                        <div class="lang-jp">易経六十四卦と紫微斗数を用い、宇宙の気運と個人の命運を推演する。天命を知ることで、人生の進退を定め、天道の無常を明らかにする。</div>
+                        <div class="lang-en">Utilizing the I-Ching (Book of Changes) and Purple Star Astrology to deduce cosmic cycles and individual destiny. Understanding the will of Heaven to navigate life's uncertainties.</div>
+                    </div>
                 </div>
+                <!-- 人纪 -->
                 <div class="book-col">
-                    <div class="book-icon">人</div><h3 class="book-title">人纪</h3>
-                    <div class="book-desc"><span class="lang-cn">五大经典</span><span class="lang-tw">五大經典</span><span class="lang-jp">五大経典</span><span class="lang-en">Classics</span></div>
+                    <div class="book-icon">人</div>
+                    <h3 class="book-title">
+                        <span class="lang-cn">人纪</span><span class="lang-tw">人紀</span><span class="lang-jp">人紀</span><span class="lang-en">Ren Ji</span>
+                    </h3>
+                    <div class="book-desc">
+                        <div class="lang-cn">涵盖针灸、内经、本草、伤寒、金匮五大心法。针药并施，辨证论治，传承汉唐正统医学，以定人事之病苦，乃中医之脊梁。</div>
+                        <div class="lang-tw">涵蓋針灸、內經、本草、傷寒、金匱五大心法。針藥並施，辨證論治，傳承漢唐正統醫學，以定人事之病苦，乃中醫之脊樑。</div>
+                        <div class="lang-jp">鍼灸、内経、本草、傷寒、金匱の五大経典を網羅する。鍼と薬を併用し、弁証論治を行い、漢唐の正統医学を継承し、人々の病苦を救う。</div>
+                        <div class="lang-en">The core of TCM, encompassing Acupuncture, Neijing, Herbology, Shanghan, and Jinkui. Integrating diagnosis and treatment to cure diseases and alleviate human suffering.</div>
+                    </div>
                 </div>
+                <!-- 地纪 -->
                 <div class="book-col">
-                    <div class="book-icon">地</div><h3 class="book-title">地纪</h3>
-                    <div class="book-desc"><span class="lang-cn">堪舆风水</span><span class="lang-tw">堪輿風水</span><span class="lang-jp">風水地理</span><span class="lang-en">Feng Shui</span></div>
+                    <div class="book-icon">地</div>
+                    <h3 class="book-title">
+                        <span class="lang-cn">地纪</span><span class="lang-tw">地紀</span><span class="lang-jp">地紀</span><span class="lang-en">Di Ji</span>
+                    </h3>
+                    <div class="book-desc">
+                        <div class="lang-cn">堪舆风水，实地考证山川河流之形态。探究环境布局对人之气运影响，吸纳天地灵气，所谓“地灵人杰”，以识地利之厚德。</div>
+                        <div class="lang-tw">堪輿風水，實地考證山川河流之形態。探究環境佈局對人之氣運影響，吸納天地靈氣，所謂「地靈人傑」，以識地利之厚德。</div>
+                        <div class="lang-jp">風水地理、山川の地形を実地考証する。環境が人の気運に与える影響を探究し、天地の霊気を取り入れ、地利の徳を知る。</div>
+                        <div class="lang-en">Feng Shui and Geomancy. Examining the layout of the land and its influence on human fortune. Harnessing the energy of the earth to optimize the living environment.</div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -341,7 +385,7 @@
 
         <footer>
             <div class="footer-seal"><span class="lang-cn">薪火相传</span><span class="lang-tw">薪火相傳</span><span class="lang-jp">薪火相伝</span><span class="lang-en">Legacy</span></div>
-            <p>&copy; Ni Hai-Sha Memorial</p>
+            <p>&copy; Ni Hai-Xia Memorial</p>
         </footer>
     </div>
 
