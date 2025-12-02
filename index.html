@@ -37,7 +37,7 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        h1, h2, h3, .book-icon {
+        h1, h2, h3, h4, .book-icon {
             font-family: "Kaiti", "STKaiti", "KaiTi", "Noto Serif SC", serif;
             font-weight: normal;
         }
@@ -47,7 +47,7 @@
             letter-spacing: 0.02em;
         }
 
-        /* ================= 修复核心：语言显示逻辑 ================= */
+        /* 语言显示逻辑 */
         .lang-cn, .lang-tw, .lang-jp, .lang-en, 
         .lang-cn-inline, .lang-tw-inline, .lang-jp-inline, .lang-en-inline { 
             display: none; 
@@ -174,7 +174,7 @@
         }
 
         .bio-text {
-            max-width: 740px; /* 稍微加宽以容纳更多文字 */
+            max-width: 740px; 
             margin: 0 auto;
             font-size: 1.05rem; 
             text-align: justify;
@@ -184,6 +184,44 @@
         body.show-en .bio-text { text-indent: 0; }
         
         .bio-text p { margin-bottom: 1.5em; }
+
+        /* 贡献列表样式 */
+        .contribution-list {
+            max-width: 740px;
+            margin: 0 auto;
+            text-align: left;
+        }
+        
+        .contrib-item {
+            margin-bottom: 40px; /* 增加间距 */
+            padding-bottom: 30px;
+            border-bottom: 1px dashed rgba(0,0,0,0.1); /* 加深一点边框 */
+        }
+        .contrib-item:last-child { border-bottom: none; }
+
+        h4.contrib-title {
+            font-size: 1.3rem; /* 标题加大 */
+            color: var(--cinnabar);
+            margin: 0 0 15px 0;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        /* 标题前的小装饰 */
+        h4.contrib-title::before {
+            content: "▪";
+            margin-right: 10px;
+            color: var(--ink-grey);
+            font-size: 0.8rem;
+        }
+        
+        .contrib-desc {
+            font-size: 1.05rem;
+            color: #333; /* 字体加深 */
+            line-height: 1.9;
+            text-align: justify;
+        }
 
         /* 书籍区域 */
         .books-container {
@@ -213,10 +251,9 @@
             text-align: justify; 
             max-width: 260px; 
         }
-        
         body.show-en .book-desc { text-align: left; } 
 
-        /* ================= 语录轮播区域 ================= */
+        /* 语录轮播区域 */
         .motto-section {
             margin: 40px 0 40px; 
             text-align: center;
@@ -247,11 +284,7 @@
             font-family: "Georgia", serif;
         }
 
-        .quote-line-break { 
-            display: block; 
-            margin-top: 15px; 
-            content: "";
-        } 
+        .quote-line-break { display: block; margin-top: 15px; content: ""; } 
 
         footer {
             text-align: center; padding-top: 50px; padding-bottom: 30px;
@@ -292,7 +325,6 @@
 </head>
 <body class="show-cn">
     <div class="main-wrapper">
-        <!-- 语言切换器 -->
         <div class="lang-switch">
             <span class="lang-btn" onclick="setLang('cn')" id="btn-cn">简</span>
             <span class="lang-btn" onclick="setLang('tw')" id="btn-tw">繁</span>
@@ -316,7 +348,6 @@
             <div class="life-dates">1954 - 2012</div>
         </header>
 
-        <!-- 生平部分：深度扩充 -->
         <section class="content-section">
             <h2 class="section-header">
                 <span class="lang-cn">宗师生平</span>
@@ -325,32 +356,101 @@
                 <span class="lang-en">Biography</span>
             </h2>
             <div class="bio-text">
-                <!-- 简体 -->
                 <div class="lang-cn">
                     <p>倪海厦（1954-2012），生于台湾，东吴大学政治学系毕业。少时心怀摇滚吉他梦，后因依《医宗金鉴》自学治愈胞姐之妇科顽疾，遂与中医结缘。早年曾于台北金山南路以“梵宇龙”之名为人算命看相，虽未持执照，然名声渐起。1977至1981年间，他拜入周左宇医师门下潜心研习针灸，随师临床，施针救人逾六千，尽得真传。</p>
                     <p>1991年，倪师赴美取得佛罗里达州针灸师执照（AP356），创立“汉唐经方中医诊所”及汉唐中医学院。其医术精湛，屡起沉疴，治愈无数西医判定之绝症，被誉为“最后的希望”。2000年至2003年，受命担任佛州针灸委员会委员及副主席，并协助内布拉斯加州通过针灸法案，荣获侨委会张富美主席颁发“海外优秀华人奖”。</p>
                     <p>为传承绝学，倪师通过网页日志、DVD教学及师徒制临床跟诊，倾囊相授《人纪》（针灸、内经、本草、伤寒、金匮）。2009年受邀至上海中医药大学扶阳论坛演讲；2010年9月，应斯坦福大学（Stanford）教授孟怀萦及李宗恩之邀赴硅谷演讲，吸引千人聆听，被《远见杂志》誉为“硅谷高科技华人迷中医”之热潮。晚年先后成立台北及深圳汉唐经方中医馆，以此生生不息。</p>
                 </div>
-                
-                <!-- 繁体 -->
                 <div class="lang-tw">
                     <p>倪海廈（1954-2012），生於台灣，東吳大學政治學系畢業。少時心懷搖滾吉他夢，後因依《醫宗金鑑》自學治癒胞姐之婦科頑疾，遂與中醫結緣。早年曾於台北金山南路以「梵宇龍」之名為人算命看相，雖未持執照，然名聲漸起。1977至1981年間，他拜入周左宇醫師門下潛心研習針灸，隨師臨床，施針救人逾六千，盡得真傳。</p>
                     <p>1991年，倪師赴美取得佛羅里達州針灸師執照（AP356），創立「漢唐經方中醫診所」及漢唐中醫學院。其醫術精湛，屢起沉痾，治癒無數西醫判定之絕症，被譽為「最後的希望」。2000年至2003年，受命擔任佛州針灸委員會委員及副主席，並協助內布拉斯加州通過針灸法案，榮獲僑委會張富美主席頒發「海外優秀華人獎」。</p>
                     <p>為傳承絕學，倪師通過網頁日誌、DVD教學及師徒制臨床跟診，傾囊相授《人紀》（針灸、內經、本草、傷寒、金匱）。2009年受邀至上海中醫藥大學扶陽論壇演講；2010年9月，應史丹福大學（Stanford）教授孟懷縈及李宗恩之邀赴矽谷演講，吸引千人聆聽，被《遠見雜誌》譽為「矽谷高科技華人迷中醫」之熱潮。晚年先後成立台北及深圳漢唐經方中醫館，以此生生不息。</p>
                 </div>
-
-                <!-- 日文 -->
                 <div class="lang-jp">
                     <p>倪海厦（1954-2012）。台湾生まれ、東呉大学政治学部卒業。若き日はロックギタリストを夢見ていたが、『医宗金鑑』による独学で姉の病を治癒させたことを機に医学へ。1977年から1981年にかけ、周左宇医師に師事し、臨床の場で6000人以上を治療し、その真髄を得た。</p>
                     <p>1991年、米国フロリダ州にて鍼灸師免許（AP356）を取得し、「漢唐経方中医診療所」を開設。西洋医学で見放された難病を次々と治癒させ、「最後の希望」と称された。2000年から2003年までフロリダ州鍼灸委員会の副委員長を務め、ネブラスカ州の鍼灸法案可決にも尽力し、「海外優秀華人賞」を受賞した。</p>
                     <p>絶学を継承すべく、『人紀』シリーズ（鍼灸、内経、本草、傷寒、金匱）の教材を制作。2009年には上海中医薬大学「扶陽フォーラム」で講演。2010年にはスタンフォード大学（Stanford University）の孟懐縈教授らの招聘によりシリコンバレーで講演を行い、1200人以上を動員、『遠見雑誌』に特集されるほどの反響を呼んだ。晩年は台北と深圳にも診療所を開設し、その遺志は今も生き続けている。</p>
                 </div>
-
-                <!-- 英文 -->
                 <div class="lang-en">
                     <p>Ni Hai-Xia (1954–2012), born in Taiwan, was a graduate of Soochow University. In his youth, he dreamed of being a rock guitarist but turned to Traditional Chinese Medicine (TCM) after curing his sister using the <em>Golden Mirror of Medicine</em>. From 1977 to 1981, he apprenticed under Dr. Zhou Zuoyu, treating over 6,000 patients and mastering the art of acupuncture.</p>
                     <p>In 1991, he obtained his Florida Acupuncture License (AP356) and founded the "Han Tang TCM Clinic," earning a reputation as "The Last Hope" for curing terminal illnesses. From 2000 to 2003, he served as Vice Chair of the Florida Board of Acupuncture and helped pass legislation in Nebraska. He was honored with the "Overseas Outstanding Chinese Award" by OCAC Minister Chang Fu-mei.</p>
                     <p>To preserve orthodox TCM, Master Ni produced the "Ren Ji" series (Acupuncture, Neijing, Herbology, Shanghan, Jinkui). In 2010, invited by Prof. Meng Huaiying and Lee Tsung-en, he lectured at Stanford University to over 1,200 attendees, an event highlighted by <em>Global Views Monthly</em> as a "TCM Craze in Silicon Valley." He established clinics in Taipei and Shenzhen before his passing, ensuring his legacy endures.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 主要贡献：深度扩充 -->
+        <section class="content-section">
+            <h2 class="section-header">
+                <span class="lang-cn">主要贡献</span>
+                <span class="lang-tw">主要貢獻</span>
+                <span class="lang-jp">主な貢献</span>
+                <span class="lang-en">Major Contributions</span>
+            </h2>
+            
+            <div class="contribution-list">
+                <!-- 贡献1 -->
+                <div class="contrib-item">
+                    <h4 class="contrib-title">
+                        <span class="lang-cn">复兴经方绝学</span>
+                        <span class="lang-tw">復興經方絕學</span>
+                        <span class="lang-jp">経方医学の復興</span>
+                        <span class="lang-en">Revival of Classical Prescriptions</span>
+                    </h4>
+                    <div class="contrib-desc">
+                        <span class="lang-cn">倪师毕生致力于将逐渐失传的《伤寒杂病论》经方医学重回临床主流。他力排众议，指出现代中医受温病派影响过深，导致“慢郎中”的刻板印象。通过实证“一剂知，二剂已”的神效，他向世人证明了汉唐正统医学在治疗急重症及癌症方面的强大威力。</span>
+                        <span class="lang-tw">倪師畢生致力於將逐漸失傳的《傷寒雜病論》經方醫學重回臨床主流。他力排眾議，指出現代中醫受溫病派影響過深，導致「慢郎中」的刻板印象。通過實證「一劑知，二劑已」的神效，他向世人證明了漢唐正統醫學在治療急重症及癌症方面的強大威力。</span>
+                        <span class="lang-jp">倪師は、失われつつあった『傷寒雑病論』の経方医学を臨床の主流に戻すことに生涯を捧げた。現代中医が温病派の影響を強く受けすぎていると指摘し、中医の「効き目が遅い」という固定観念を打破。「一剤で知り、二剤で癒す」という神効を実証し、救急医療や癌治療における正統医学の威力を証明した。</span>
+                        <span class="lang-en">Master Ni dedicated his life to reviving the fading art of Classical Prescriptions ("Jing Fang") from the Han Dynasty. He argued that modern TCM was overly influenced by the "Wen Bing" school, leading to the misconception that TCM is slow-acting. By demonstrating rapid clinical results—"perceived effect with one dose, cure with two"—he proved the power of orthodox TCM in treating acute and critical illnesses, including cancer.</span>
+                    </div>
+                </div>
+
+                <!-- 贡献2 -->
+                <div class="contrib-item">
+                    <h4 class="contrib-title">
+                        <span class="lang-cn">构建人纪传承体系</span>
+                        <span class="lang-tw">構建人紀傳承體系</span>
+                        <span class="lang-jp">「人紀」教育体系の構築</span>
+                        <span class="lang-en">The "Ren Ji" Educational Legacy</span>
+                    </h4>
+                    <div class="contrib-desc">
+                        <span class="lang-cn">为免绝学失传，倪师耗尽心血录制《人纪》系列教学，涵盖针灸、黄帝内经、神农本草经、伤寒论、金匮要略。他以深入浅出的语言，将晦涩难懂的古籍转化为逻辑严密的现代知识体系，不仅培养了无数优秀中医师，更让普通大众得以窥见中医殿堂的奥秘。</span>
+                        <span class="lang-tw">為免絕學失傳，倪師耗盡心血錄製《人紀》系列教學，涵蓋針灸、黃帝內經、神農本草經、傷寒論、金匱要略。他以深入淺出的語言，將晦澀難懂的古籍轉化為邏輯嚴密的現代知識體系，不僅培養了無數優秀中醫師，更讓普通大眾得以窺見中醫殿堂的奧秘。</span>
+                        <span class="lang-jp">絶学の断絶を防ぐため、『人紀』シリーズ（鍼灸、内経、本草、傷寒、金匱）を制作。難解な古典を、現代人にも理解できる論理的な知識体系へと再構築した。これにより多くの優秀な中医を育成しただけでなく、一般の人々にも中医の深奥なる世界への扉を開いた。</span>
+                        <span class="lang-en">To prevent the loss of this ancient wisdom, Master Ni produced the "Ren Ji" teaching series, covering Acupuncture, the Yellow Emperor's Canon, Herbology, Shang Han Lun, and Jin Kui Yao Lue. He translated obscure ancient texts into a logical, accessible knowledge system, training countless physicians and allowing the general public to grasp the profound mysteries of TCM.</span>
+                    </div>
+                </div>
+
+                <!-- 贡献3 -->
+                <div class="contrib-item">
+                    <h4 class="contrib-title">
+                        <span class="lang-cn">医易同源与宏观视角</span>
+                        <span class="lang-tw">醫易同源與宏觀視角</span>
+                        <span class="lang-jp">医易同源と巨視的視点</span>
+                        <span class="lang-en">Unity of Medicine and Yi</span>
+                    </h4>
+                    <div class="contrib-desc">
+                        <span class="lang-cn">倪师独创性地将“天纪”（易经、紫微斗数）与“地纪”（堪舆风水）融入中医诊疗。他提出“不知命无以为君子，不知易无以为大医”，利用五行生克推演病程走向，通过风水布局辅助顽疾康复，开创了中医治疗的宏观高维视角，强调“治人”重于“治病”。</span>
+                        <span class="lang-tw">倪師獨創性地將「天紀」（易經、紫微斗數）與「地紀」（堪輿風水）融入中醫診療。他提出「不知命無以為君子，不知易無以為大醫」，利用五行生克推演病程走向，通過風水佈局輔助頑疾康復，開創了中醫治療的宏觀高維視角，強調「治人」重於「治病」。</span>
+                        <span class="lang-jp">「天紀」（易経、紫微斗数）と「地紀」（風水）を中医診療に融合させた。「命を知らざれば君子に及ばず、易を知らざれば大医に及ばず」と説き、五行説を用いて病の経過を予測し、風水によって難病の治癒を助けるという、巨視的かつ高次元な治療法を確立した。</span>
+                        <span class="lang-en">Master Ni innovatively integrated "Tian Ji" (I-Ching, Astrology) and "Di Ji" (Feng Shui) into medical practice. Asserting that "one cannot be a great doctor without understanding the Changes," he used elemental cycles to predict disease progression and Feng Shui to aid recovery. This established a macroscopic, multi-dimensional approach to healing, prioritizing treating the "person" over just the "disease."</span>
+                    </div>
+                </div>
+
+                <!-- 贡献4 -->
+                <div class="contrib-item">
+                    <h4 class="contrib-title">
+                        <span class="lang-cn">正本清源，捍卫正统</span>
+                        <span class="lang-tw">正本清源，捍衛正統</span>
+                        <span class="lang-jp">源流を清め、正統を守る</span>
+                        <span class="lang-en">Defending Orthodoxy</span>
+                    </h4>
+                    <div class="contrib-desc">
+                        <span class="lang-cn">他以“物理医学”定义中医，区别于西医的“化学医学”，犀利批判过度医疗、滥用抗生素及商业资本对健康的绑架。他敢于挑战权威，揭露伪科学养生陷阱，唤醒了国人对传统文化的自信，被视为当代中医界的“斗士”与精神领袖。</span>
+                        <span class="lang-tw">他以「物理醫學」定義中醫，區別於西醫的「化學醫學」，犀利批判過度醫療、濫用抗生素及商業資本對健康的綁架。他敢於挑戰權威，揭露偽科學養生陷阱，喚醒了國人對傳統文化的自信，被視為當代中醫界的「鬥士」與精神領袖。</span>
+                        <span class="lang-jp">中医を「物理医学」と定義し、西洋医学の「化学医学」と区別した。過剰医療、抗生物質の乱用、そして健康を蝕む商業主義を鋭く批判。権威に立ち向かい、偽りの健康法を暴くことで、伝統文化への誇りを呼び覚まし、現代中医界の「闘士」として精神的支柱となった。</span>
+                        <span class="lang-en">Defining TCM as "Physical Medicine" versus Western "Chemical Medicine," he fiercely criticized over-treatment, antibiotic abuse, and the commercialization of health. As a fearless "warrior" for the truth, he challenged authority and exposed pseudo-scientific health traps, restoring national confidence in traditional culture and serving as a spiritual leader in the modern TCM community.</span>
+                    </div>
                 </div>
             </div>
         </section>
@@ -361,40 +461,34 @@
                 <!-- 天纪 -->
                 <div class="book-col">
                     <div class="book-icon">天</div>
-                    <h3 class="book-title">
-                        <span class="lang-cn">天纪</span><span class="lang-tw">天紀</span><span class="lang-jp">天紀</span><span class="lang-en">Tian Ji</span>
-                    </h3>
+                    <h3 class="book-title"><span class="lang-cn">天纪</span><span class="lang-tw">天紀</span><span class="lang-jp">天紀</span><span class="lang-en">Tian Ji</span></h3>
                     <div class="book-desc">
                         <div class="lang-cn">运用易经六十四卦与紫微斗数，推演宇宙气运与个人命途。主张“不知命无以为君子”，通过知天命而运筹帷幄，以明天道之无常。</div>
                         <div class="lang-tw">運用易經六十四卦與紫微斗數，推演宇宙氣運與個人命途。主張「不知命無以為君子」，通過知天命而運籌帷幄，以明天道之無常。</div>
                         <div class="lang-jp">易経六十四卦と紫微斗数を用い、宇宙の気運と個人の命運を推演する。天命を知ることで、人生の進退を定め、天道の無常を明らかにする。</div>
-                        <div class="lang-en">Utilizing the I-Ching (Book of Changes) and Purple Star Astrology to deduce cosmic cycles and individual destiny. Understanding the will of Heaven to navigate life's uncertainties.</div>
+                        <div class="lang-en">Utilizing the I-Ching and Purple Star Astrology to deduce cosmic cycles and individual destiny. Understanding Heaven to navigate life's uncertainties.</div>
                     </div>
                 </div>
                 <!-- 人纪 -->
                 <div class="book-col">
                     <div class="book-icon">人</div>
-                    <h3 class="book-title">
-                        <span class="lang-cn">人纪</span><span class="lang-tw">人紀</span><span class="lang-jp">人紀</span><span class="lang-en">Ren Ji</span>
-                    </h3>
+                    <h3 class="book-title"><span class="lang-cn">人纪</span><span class="lang-tw">人紀</span><span class="lang-jp">人紀</span><span class="lang-en">Ren Ji</span></h3>
                     <div class="book-desc">
                         <div class="lang-cn">涵盖针灸、内经、本草、伤寒、金匮五大心法。针药并施，辨证论治，传承汉唐正统医学，以定人事之病苦，乃中医之脊梁。</div>
                         <div class="lang-tw">涵蓋針灸、內經、本草、傷寒、金匱五大心法。針藥並施，辨證論治，傳承漢唐正統醫學，以定人事之病苦，乃中醫之脊樑。</div>
                         <div class="lang-jp">鍼灸、内経、本草、傷寒、金匱の五大経典を網羅する。鍼と薬を併用し、弁証論治を行い、漢唐の正統医学を継承し、人々の病苦を救う。</div>
-                        <div class="lang-en">The core of TCM, encompassing Acupuncture, Neijing, Herbology, Shanghan, and Jinkui. Integrating diagnosis and treatment to cure diseases and alleviate human suffering.</div>
+                        <div class="lang-en">The core of TCM, encompassing Acupuncture, Neijing, Herbology, Shanghan, and Jinkui. Integrating diagnosis and treatment to cure diseases.</div>
                     </div>
                 </div>
                 <!-- 地纪 -->
                 <div class="book-col">
                     <div class="book-icon">地</div>
-                    <h3 class="book-title">
-                        <span class="lang-cn">地纪</span><span class="lang-tw">地紀</span><span class="lang-jp">地紀</span><span class="lang-en">Di Ji</span>
-                    </h3>
+                    <h3 class="book-title"><span class="lang-cn">地纪</span><span class="lang-tw">地紀</span><span class="lang-jp">地紀</span><span class="lang-en">Di Ji</span></h3>
                     <div class="book-desc">
                         <div class="lang-cn">堪舆风水，实地考证山川河流之形态。探究环境布局对人之气运影响，吸纳天地灵气，所谓“地灵人杰”，以识地利之厚德。</div>
                         <div class="lang-tw">堪輿風水，實地考證山川河流之形態。探究環境佈局對人之氣運影響，吸納天地靈氣，所謂「地靈人傑」，以識地利之厚德。</div>
                         <div class="lang-jp">風水地理、山川の地形を実地考証する。環境が人の気運に与える影響を探究し、天地の霊気を取り入れ、地利の徳を知る。</div>
-                        <div class="lang-en">Feng Shui and Geomancy. Examining the layout of the land and its influence on human fortune. Harnessing the energy of the earth to optimize the living environment.</div>
+                        <div class="lang-en">Feng Shui and Geomancy. Examining the layout of the land and its influence on human fortune. Harnessing the energy of the earth.</div>
                     </div>
                 </div>
             </div>
