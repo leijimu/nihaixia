@@ -12,7 +12,8 @@
     
     <meta property="og:image" content="https://raw.githubusercontent.com/leijimu/nihaixia/main/nihaixia-wb.jpg">
     <link rel="icon" href="https://nihaixia.xyz/favicon.ico" type="image/x-icon">
-    <link rel="shortcut icon"href="https://nihaixia.xyz/favicon-180.png" type="image/x-icon"/>
+    <link rel="shortcut icon" href="https://nihaixia.xyz/favicon-180.png" type="image/x-icon"/>
+
     <!-- 字体优化 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -192,99 +193,111 @@
             margin: 0 auto;
             text-align: left;
         }
-        
         .contrib-item {
-            margin-bottom: 40px; /* 增加间距 */
+            margin-bottom: 40px;
             padding-bottom: 30px;
-            border-bottom: 1px dashed rgba(0,0,0,0.1); /* 加深一点边框 */
+            border-bottom: 1px dashed rgba(0,0,0,0.1);
         }
         .contrib-item:last-child { border-bottom: none; }
 
         h4.contrib-title {
-            font-size: 1.3rem; /* 标题加大 */
+            font-size: 1.3rem;
             color: var(--cinnabar);
             margin: 0 0 15px 0;
             font-weight: bold;
             display: flex;
             align-items: center;
         }
-        
-        /* 标题前的小装饰 */
         h4.contrib-title::before {
-            content: "▪";
-            margin-right: 10px;
-            color: var(--ink-grey);
-            font-size: 0.8rem;
+            content: "▪"; margin-right: 10px; color: var(--ink-grey); font-size: 0.8rem;
         }
-        
         .contrib-desc {
-            font-size: 1.05rem;
-            color: #333; /* 字体加深 */
-            line-height: 1.9;
-            text-align: justify;
+            font-size: 1.05rem; color: #333; line-height: 1.9; text-align: justify;
+        }
+
+        /* ================= 新增：图片横向滚动模块 (Gallery) ================= */
+        .gallery-section {
+            width: 100%;
+            overflow: hidden;
+            padding: 40px 0;
+            border-top: 1px solid rgba(0,0,0,0.05);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            background-color: rgba(255, 255, 255, 0.5); /* 轻微提亮背景 */
+            margin: 40px 0;
+        }
+
+        .scroll-track {
+            display: flex;
+            gap: 30px; /* 图片间距 */
+            width: max-content;
+            /* 50秒循环滚动，平滑 */
+            animation: scroll-left 50s linear infinite;
+        }
+
+        /* 鼠标悬停暂停 */
+        .scroll-track:hover {
+            animation-play-state: paused;
+        }
+
+        .scroll-item {
+            flex-shrink: 0; 
+            height: 220px; /* 固定高度 */
+            width: auto;   /* 宽度自适应 */
+            
+            /* 核心需求：2px 实线 #333333 */
+            border: 2px solid #333333; 
+            
+            padding: 4px; 
+            background: #fff;
+            filter: grayscale(90%);
+            transition: all 0.5s ease;
+            cursor: pointer;
+        }
+
+        .scroll-item:hover {
+            filter: grayscale(0%);
+            border-color: var(--cinnabar); /* 悬停变红 */
+            transform: scale(1.02);
+        }
+
+        @keyframes scroll-left {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); } /* 因为内容重复了一次，所以移动50%即可无缝衔接 */
         }
 
         /* 书籍区域 */
         .books-container {
             display: grid; grid-template-columns: repeat(3, 1fr);
-            gap: 40px; 
-            margin-top: 20px;
+            gap: 40px; margin-top: 20px;
             border-top: 1px solid var(--border-line);
             border-bottom: 1px solid var(--border-line);
-            padding: 50px 0;
-            align-items: start; 
+            padding: 50px 0; align-items: start; 
         }
         .book-col { display: flex; flex-direction: column; align-items: center; }
-        
         .book-icon {
             width: 50px; height: 50px; line-height: 50px;
             border: 1px solid var(--cinnabar); border-radius: 50%;
             color: var(--cinnabar); font-size: 1.4rem; margin-bottom: 20px;
             text-align: center;
         }
-        
         h3.book-title { font-size: 1.5rem; margin-bottom: 15px; color: var(--ink-black); }
-        
-        .book-desc { 
-            font-size: 0.95rem; 
-            color: #555; 
-            line-height: 1.8; 
-            text-align: justify; 
-            max-width: 260px; 
-        }
+        .book-desc { font-size: 0.95rem; color: #555; line-height: 1.8; text-align: justify; max-width: 260px; }
         body.show-en .book-desc { text-align: left; } 
 
-        /* 语录轮播区域 */
+        /* 语录轮播 */
         .motto-section {
             margin: 40px 0 40px; 
-            text-align: center;
-            display: flex; 
-            justify-content: center;
-            align-items: center;
-            min-height: 180px; 
-            position: relative;
+            text-align: center; display: flex; justify-content: center; align-items: center;
+            min-height: 180px; position: relative;
         }
-
         #quote-container {
-            font-size: 1.5rem; 
-            color: var(--ink-black);
-            writing-mode: horizontal-tb; 
-            text-align: center;
-            letter-spacing: 0.15em; 
-            line-height: 1.8;
-            border-right: none; 
-            width: 90%;
-            max-width: 800px;
-            padding: 20px 0;
-            opacity: 1;
-            transition: opacity 1s ease-in-out;
+            font-size: 1.5rem; color: var(--ink-black);
+            writing-mode: horizontal-tb; text-align: center;
+            letter-spacing: 0.15em; line-height: 1.8;
+            border-right: none; width: 90%; max-width: 800px;
+            padding: 20px 0; opacity: 1; transition: opacity 1s ease-in-out;
         }
-        
-        body.show-en #quote-container {
-            font-style: italic;
-            font-family: "Georgia", serif;
-        }
-
+        body.show-en #quote-container { font-style: italic; font-family: "Georgia", serif; }
         .quote-line-break { display: block; margin-top: 15px; content: ""; } 
 
         footer {
@@ -298,29 +311,14 @@
         }
 
         @media (max-width: 768px) {
-            .main-wrapper { 
-                padding: 20px 15px; 
-                width: 100%; max-width: 100%;
-                box-shadow: none; border: none;
-            }
+            .main-wrapper { padding: 20px 15px; width: 100%; max-width: 100%; border: none; }
             .portrait-frame { width: 140px; height: 175px; padding: 6px; margin-bottom: 25px; }
-            h1.master-name { 
-                font-size: 2.4rem; writing-mode: horizontal-tb; 
-                letter-spacing: 0.2em; margin-top: 10px; line-height: 1.4;
-            }
-            body.show-en h1.master-name { font-size: 1.8rem; letter-spacing: 0px; }
-            
+            h1.master-name { font-size: 2.4rem; letter-spacing: 0.2em; margin-top: 10px; line-height: 1.4; }
             .books-container { grid-template-columns: 1fr; gap: 50px; padding: 40px 20px; }
             .book-desc { max-width: 100%; padding: 0 10px; }
-
-            #quote-container {
-                font-size: 1.25rem; 
-                line-height: 1.6;
-                width: 100%;
-            }
+            #quote-container { font-size: 1.25rem; line-height: 1.6; width: 100%; }
             .quote-line-break { margin-top: 12px; }
-            .lang-switch { top: 10px; right: 10px; }
-            .lang-btn { margin: 0 8px; font-size: 1rem; }
+            .scroll-item { height: 160px; } /* 手机端减小图片高度 */
         }
     </style>
 </head>
@@ -358,29 +356,71 @@
             </h2>
             <div class="bio-text">
                 <div class="lang-cn">
-                    <p>倪海厦（1954-2012），生于台湾，东吴大学政治学系毕业。少时心怀摇滚吉他梦，后因依《医宗金鉴》自学治愈胞姐之妇科顽疾，遂与中医结缘。早年曾于台北金山南路以“梵宇龙”之名为人算命看相，虽未持执照，然名声渐起。1977至1981年间，他拜入周左宇医师门下潜心研习针灸，随师临床，施针救人逾六千，尽得真传。</p>
-                    <p>1991年，倪师赴美取得佛罗里达州针灸师执照（AP356），创立“汉唐经方中医诊所”及汉唐中医学院。其医术精湛，屡起沉疴，治愈无数西医判定之绝症，被誉为“最后的希望”。2000年至2003年，受命担任佛州针灸委员会委员及副主席，并协助内布拉斯加州通过针灸法案，荣获侨委会张富美主席颁发“海外优秀华人奖”。</p>
-                    <p>为传承绝学，倪师通过网页日志、DVD教学及师徒制临床跟诊，倾囊相授《人纪》（针灸、内经、本草、伤寒、金匮）。2009年受邀至上海中医药大学扶阳论坛演讲；2010年9月，应斯坦福大学（Stanford）教授孟怀萦及李宗恩之邀赴硅谷演讲，吸引千人聆听，被《远见杂志》誉为“硅谷高科技华人迷中医”之热潮。晚年先后成立台北及深圳汉唐经方中医馆，以此生生不息。</p>
+                    <p>倪海厦（1954-2012），生于台湾，东吴大学政治学系毕业，拥有中华民国与美国双重国籍。少时心怀摇滚吉他梦，后因依据《医宗金鉴》自学治愈了二姐的妇科顽疾，遂与中医结下不解之缘。早年曾在台北金山南路以化名“梵宇龙”为人算命看相，铁口直断，名噪一时。</p>
+                    <p>1977年至1981年间，他拜入周左宇医师与徐济民医师门下潜心研习针灸。在周左宇医师诊所跟诊期间，虽未正式开业，但已施针救治超过6000名患者，积累了深厚的临床经验。</p>
+                    <p>1991年，倪师赴美取得佛罗里达州针灸师执照（AP356），随后创立“汉唐经方中医诊所”及汉唐中医学院。他以“经方”为正统，善用峻药，屡起沉疴，治愈了许多被西医判定为不治之症的重患，被誉为“最后的希望”。2000年至2003年，他受命担任佛州针灸委员会委员及副主席，协助内布拉斯加州通过针灸法案，并荣获中华民国侨委会张富美主席颁发“海外优秀华人奖”。</p>
+                    <p>为往圣继绝学，倪师耗尽心血完成《人纪》（针灸、内经、本草、伤寒、金匮）与《天纪》（易经、紫微斗数）的教学与著述。2009年受邀至上海中医药大学扶阳论坛演讲。2010年9月，应斯坦福大学（Stanford）教授孟怀萦及李宗恩之邀，赴硅谷进行全天演讲，吸引一千两百多位听众，被《远见杂志》报导为“硅谷高科技华人迷中医”之热潮。晚年先后成立台北及深圳汉唐经方中医馆，以此薪火相传，生生不息。</p>
                 </div>
                 <div class="lang-tw">
-                    <p>倪海廈（1954-2012），生於台灣，東吳大學政治學系畢業。少時心懷搖滾吉他夢，後因依《醫宗金鑑》自學治癒胞姐之婦科頑疾，遂與中醫結緣。早年曾於台北金山南路以「梵宇龍」之名為人算命看相，雖未持執照，然名聲漸起。1977至1981年間，他拜入周左宇醫師門下潛心研習針灸，隨師臨床，施針救人逾六千，盡得真傳。</p>
-                    <p>1991年，倪師赴美取得佛羅里達州針灸師執照（AP356），創立「漢唐經方中醫診所」及漢唐中醫學院。其醫術精湛，屢起沉痾，治癒無數西醫判定之絕症，被譽為「最後的希望」。2000年至2003年，受命擔任佛州針灸委員會委員及副主席，並協助內布拉斯加州通過針灸法案，榮獲僑委會張富美主席頒發「海外優秀華人獎」。</p>
-                    <p>為傳承絕學，倪師通過網頁日誌、DVD教學及師徒制臨床跟診，傾囊相授《人紀》（針灸、內經、本草、傷寒、金匱）。2009年受邀至上海中醫藥大學扶陽論壇演講；2010年9月，應史丹福大學（Stanford）教授孟懷縈及李宗恩之邀赴矽谷演講，吸引千人聆聽，被《遠見雜誌》譽為「矽谷高科技華人迷中醫」之熱潮。晚年先後成立台北及深圳漢唐經方中醫館，以此生生不息。</p>
+                    <p>倪海廈（1954-2012），生於台灣，東吳大學政治學系畢業，擁有中華民國與美國雙重國籍。少時心懷搖滾吉他夢，後因依據《醫宗金鑑》自學治癒了二姊的婦科頑疾，遂與中醫結下不解之緣。早年曾在台北金山南路以化名「梵宇龍」為人算命看相，鐵口直斷，名噪一時。</p>
+                    <p>1977年至1981年間，他拜入周左宇醫師與徐濟民醫師門下潛心研習針灸。在周左宇醫師診所跟診期間，雖未正式開業，但已施針救治超過6000名患者，積累了深厚的臨床經驗。</p>
+                    <p>1991年，倪師赴美取得佛羅里達州針灸師執照（AP356），隨後創立「漢唐經方中醫診所」及漢唐中醫學院。他以「經方」為正統，善用峻藥，屢起沉痾，治癒了許多被西醫判定為不治之症的重患，被譽為「最後的希望」。2000年至2003年，他受命擔任佛州針灸委員會委員及副主席，協助內布拉斯加州通過針灸法案，並榮獲中華民國僑委會張富美主席頒發「海外優秀華人獎」。</p>
+                    <p>為往聖繼絕學，倪師耗盡心血完成《人紀》（針灸、內經、本草、傷寒、金匱）與《天紀》（易經、紫微斗數）的教學與著述。2009年受邀至上海中醫藥大學扶陽論壇演講。2010年9月，應史丹福大學（Stanford）教授孟懷縈及李宗恩之邀，赴矽谷進行全天演講，吸引一千兩百多位聽眾，被《遠見雜誌》報導為「矽谷高科技華人迷中醫」之熱潮。晚年先後成立台北及深圳漢唐經方中醫館，以此薪火相傳，生生不息。</p>
                 </div>
                 <div class="lang-jp">
-                    <p>倪海厦（1954-2012）。台湾生まれ、東呉大学政治学部卒業。若き日はロックギタリストを夢見ていたが、『医宗金鑑』による独学で姉の病を治癒させたことを機に医学へ。1977年から1981年にかけ、周左宇医師に師事し、臨床の場で6000人以上を治療し、その真髄を得た。</p>
-                    <p>1991年、米国フロリダ州にて鍼灸師免許（AP356）を取得し、「漢唐経方中医診療所」を開設。西洋医学で見放された難病を次々と治癒させ、「最後の希望」と称された。2000年から2003年までフロリダ州鍼灸委員会の副委員長を務め、ネブラスカ州の鍼灸法案可決にも尽力し、「海外優秀華人賞」を受賞した。</p>
-                    <p>絶学を継承すべく、『人紀』シリーズ（鍼灸、内経、本草、傷寒、金匱）の教材を制作。2009年には上海中医薬大学「扶陽フォーラム」で講演。2010年にはスタンフォード大学（Stanford University）の孟懐縈教授らの招聘によりシリコンバレーで講演を行い、1200人以上を動員、『遠見雑誌』に特集されるほどの反響を呼んだ。晩年は台北と深圳にも診療所を開設し、その遺志は今も生き続けている。</p>
+                    <p>倪海厦（1954-2012）。台湾に生まれ、東呉大学政治学部を卒業。若き日はロックギタリストを夢見ていたが、『医宗金鑑』による独学で次姉の病を治癒させたことを機に、医学の道へと進んだ。早年は台北で「梵宇龍」という名で占い師として活動し、その的中率で名を馳せた。</p>
+                    <p>1977年から1981年にかけ、周左宇医師と徐済民医師に師事し、鍼灸を深く研鑽した。周医師の診療所での修業期間中、正式に開業する前でありながら6000人以上の患者に鍼治療を施し、膨大な臨床経験を積んだ。</p>
+                    <p>1991年、米国フロリダ州にて鍼灸師免許（AP356）を取得し、「漢唐経方中医診療所」を開設。西洋医学で見放された難病を次々と治癒させ、「最後の希望」と称賛された。2000年から2003年までフロリダ州鍼灸委員会の副委員長を務め、ネブラスカ州の鍼灸法案可決にも尽力し、中華民国僑務委員会より「海外優秀華人賞」を授与された。</p>
+                    <p>絶学を後世に残すべく、『人紀』（鍼灸、内経、本草、傷寒、金匱）および『天紀』の教材制作に心血を注いだ。2009年には上海中医薬大学「扶陽フォーラム」で講演。2010年9月、スタンフォード大学（Stanford University）の孟懐縈教授らの招聘によりシリコンバレーで講演を行い、1200人以上を動員。『遠見雑誌』に「シリコンバレーのハイテク華人が中医に熱狂」と報じられた。晩年は台北と深圳にも診療所を開設し、その遺志は今も脈々と受け継がれている。</p>
                 </div>
                 <div class="lang-en">
-                    <p>Ni Hai-Xia (1954–2012), born in Taiwan, was a graduate of Soochow University. In his youth, he dreamed of being a rock guitarist but turned to Traditional Chinese Medicine (TCM) after curing his sister using the <em>Golden Mirror of Medicine</em>. From 1977 to 1981, he apprenticed under Dr. Zhou Zuoyu, treating over 6,000 patients and mastering the art of acupuncture.</p>
-                    <p>In 1991, he obtained his Florida Acupuncture License (AP356) and founded the "Han Tang TCM Clinic," earning a reputation as "The Last Hope" for curing terminal illnesses. From 2000 to 2003, he served as Vice Chair of the Florida Board of Acupuncture and helped pass legislation in Nebraska. He was honored with the "Overseas Outstanding Chinese Award" by OCAC Minister Chang Fu-mei.</p>
-                    <p>To preserve orthodox TCM, Master Ni produced the "Ren Ji" series (Acupuncture, Neijing, Herbology, Shanghan, Jinkui). In 2010, invited by Prof. Meng Huaiying and Lee Tsung-en, he lectured at Stanford University to over 1,200 attendees, an event highlighted by <em>Global Views Monthly</em> as a "TCM Craze in Silicon Valley." He established clinics in Taipei and Shenzhen before his passing, ensuring his legacy endures.</p>
+                    <p>Ni Hai-Xia (1954–2012), born in Taiwan with dual ROC/US citizenship, was a graduate of Soochow University's Department of Political Science. In his youth, he dreamed of being a rock guitarist but turned to Traditional Chinese Medicine (TCM) after curing his sister's gynecological illness by self-studying the <em>Golden Mirror of Medicine</em>. Early in his career, he gained fame as a fortune teller under the alias "Fan Yulong" in Taipei.</p>
+                    <p>From 1977 to 1981, he apprenticed under Dr. Zhou Zuoyu and Dr. Xu Jimin, specializing in acupuncture. During his time with Dr. Zhou, he treated over 6,000 patients, accumulating immense clinical experience even before officially opening his own practice.</p>
+                    <p>In 1991, he obtained his Florida Acupuncture License (AP356) and founded the "Han Tang TCM Clinic" and College. Known for using potent "Classical Prescriptions" (Jing Fang) to treat critical illnesses that Western medicine deemed incurable, he was hailed as "The Last Hope." From 2000 to 2003, he served as a member and Vice Chair of the Florida Board of Acupuncture and was honored with the "Overseas Outstanding Chinese Award" by OCAC Minister Chang Fu-mei.</p>
+                    <p>To preserve this ancient wisdom, Master Ni completed the monumental "Ren Ji" (Acupuncture, Neijing, Herbology, Shanghan, Jinkui) and "Tian Ji" (I-Ching, Astrology) teaching series. In 2009, he spoke at the Shanghai University of TCM. In September 2010, invited by Prof. Meng Huaiying and Lee Tsung-en, he lectured at Stanford University to over 1,200 attendees, sparking a "TCM Craze in Silicon Valley" as reported by <em>Global Views Monthly</em>. He established clinics in Taipei and Shenzhen before his passing, ensuring his legacy lives on.</p>
                 </div>
             </div>
         </section>
 
-        <!-- 主要贡献：深度扩充 -->
+        <!-- 新增：影像长河 (8张图片，横向滚动，2px #333 边框) -->
+        <section class="gallery-section">
+            <div class="scroll-track">
+                <!-- 图片1：倪师肖像 -->
+                <img src="https://raw.githubusercontent.com/leijimu/nihaixia/main/nihaixia-wb.jpg" class="scroll-item" alt="Ni Hai-Xia Portrait">
+                
+                <!-- 图片2：古籍 (代表医宗金鉴/人纪) -->
+                <img src="https://images.unsplash.com/photo-1535905557558-afc4877a26fc?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" class="scroll-item" alt="Ancient Medical Books">
+                
+                <!-- 图片3：针灸 (代表针灸大成) -->
+                <img src="https://images.unsplash.com/photo-1583947581924-860b81d41d7a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" class="scroll-item" alt="Acupuncture Needles">
+                
+                <!-- 图片4：中药草本 (代表神农本草经) -->
+                <img src="https://images.unsplash.com/photo-1620733687726-4d5e26fb7db4?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" class="scroll-item" alt="Traditional Herbs">
+                
+                <!-- 图片5：山水 (代表地纪/风水) -->
+                <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" class="scroll-item" alt="Feng Shui Landscape">
+                
+                <!-- 图片6：罗盘/天文 (代表天纪) -->
+                <img src="https://images.unsplash.com/photo-1504701950205-c354e52fd52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" class="scroll-item" alt="Compass and Astrology">
+                
+                <!-- 图片7：书法/文化 (代表汉唐精神) -->
+                <img src="https://images.unsplash.com/photo-1516961642265-531546e84af2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" class="scroll-item" alt="Chinese Calligraphy">
+                
+                <!-- 图片8：药柜/诊所 (代表悬壶济世) -->
+                <img src="https://images.unsplash.com/photo-1585435557343-3b092031a831?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" class="scroll-item" alt="TCM Medicine Cabinet">
+
+                <!-- --- 复制一份实现无缝滚动 (共16张) --- -->
+                <img src="https://raw.githubusercontent.com/leijimu/nihaixia/main/nihaixia-wb.jpg" class="scroll-item">
+                <img src="https://images.unsplash.com/photo-1535905557558-afc4877a26fc?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" class="scroll-item">
+                <img src="https://images.unsplash.com/photo-1583947581924-860b81d41d7a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" class="scroll-item">
+                <img src="https://images.unsplash.com/photo-1620733687726-4d5e26fb7db4?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" class="scroll-item">
+                <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" class="scroll-item">
+                <img src="https://images.unsplash.com/photo-1504701950205-c354e52fd52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" class="scroll-item">
+                <img src="https://images.unsplash.com/photo-1516961642265-531546e84af2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" class="scroll-item">
+                <img src="https://images.unsplash.com/photo-1585435557343-3b092031a831?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" class="scroll-item">
+            </div>
+        </section>
+
         <section class="content-section">
             <h2 class="section-header">
                 <span class="lang-cn">主要贡献</span>
@@ -390,7 +430,6 @@
             </h2>
             
             <div class="contribution-list">
-                <!-- 贡献1 -->
                 <div class="contrib-item">
                     <h4 class="contrib-title">
                         <span class="lang-cn">复兴经方绝学</span>
@@ -406,7 +445,6 @@
                     </div>
                 </div>
 
-                <!-- 贡献2 -->
                 <div class="contrib-item">
                     <h4 class="contrib-title">
                         <span class="lang-cn">构建人纪传承体系</span>
@@ -422,7 +460,6 @@
                     </div>
                 </div>
 
-                <!-- 贡献3 -->
                 <div class="contrib-item">
                     <h4 class="contrib-title">
                         <span class="lang-cn">医易同源与宏观视角</span>
@@ -438,7 +475,6 @@
                     </div>
                 </div>
 
-                <!-- 贡献4 -->
                 <div class="contrib-item">
                     <h4 class="contrib-title">
                         <span class="lang-cn">正本清源，捍卫正统</span>
