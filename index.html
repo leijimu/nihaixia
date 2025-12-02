@@ -6,8 +6,8 @@
     
     <title>倪海厦纪念馆 | 汉唐中医经方宗师 | Ni Hai-Sha Memorial</title>
     
-    <meta name="description" content="倪海厦（Ni Hai-Sha, 1954-2012）纪念网站。生于台湾，旅美经方大师，汉唐中医创办人。致力传承《人纪》绝学，曾任佛州针灸委员会副主席，于斯坦福大学演讲。">
-    <meta name="keywords" content="倪海厦, Ni Hai-Sha, 汉唐中医, 经方, 人纪, 佛州针灸师, 斯坦福演讲, 周左宇, 徐济民">
+    <meta name="description" content="倪海厦（Ni Hai-Sha, 1954-2012）纪念网站。生于台湾，旅美经方大师，汉唐中医创办人。致力传承《人纪》绝学。">
+    <meta name="keywords" content="倪海厦, Ni Hai-Sha, 汉唐中医, 经方, 人纪">
     <meta name="author" content="Ni Hai-Sha Memorial">
     
     <meta property="og:image" content="https://raw.githubusercontent.com/leijimu/nihaixia/main/nihaixia-wb.jpg">
@@ -106,7 +106,7 @@
             display: flex; 
             justify-content: center;
             align-items: center;
-            overflow: hidden; /* 防止图片溢出 */
+            overflow: hidden;
         }
 
         .portrait-img {
@@ -117,7 +117,6 @@
             filter: grayscale(100%); 
             transition: filter 0.5s ease;
             display: block;
-            /* 修复部分安卓机渲染问题 */
             max-width: 100%; 
         }
         .portrait-frame:hover .portrait-img,
@@ -194,22 +193,42 @@
         h3.book-title { font-size: 1.3rem; margin-bottom: 10px; color: var(--ink-black); }
         .book-desc { font-size: 0.9rem; color: var(--ink-grey); line-height: 1.7; }
 
-        /* 语录区域 */
+        /* ================= 语录轮播区域 ================= */
         .motto-section {
-            margin: 40px 0 40px; text-align: center;
-            display: flex; justify-content: center;
+            margin: 40px 0 40px; 
+            text-align: center;
+            display: flex; 
+            justify-content: center;
+            align-items: center;
+            min-height: 180px; 
+            position: relative;
         }
-        .motto-text {
-            font-size: 1.6rem; color: var(--ink-black);
-            writing-mode: vertical-rl; text-orientation: upright;
-            height: 220px; letter-spacing: 0.4rem;
-            border-right: 1px solid var(--border-line); padding-right: 20px;
+
+        #quote-container {
+            font-size: 1.5rem; 
+            color: var(--ink-black);
+            writing-mode: horizontal-tb; 
+            text-align: center;
+            letter-spacing: 0.15em; 
+            line-height: 1.8;
+            border-right: none; 
+            width: 90%;
+            max-width: 800px;
+            padding: 20px 0;
+            opacity: 1;
+            transition: opacity 1s ease-in-out;
         }
-        body.show-en .motto-text {
-            writing-mode: horizontal-tb; height: auto;
-            border-right: none; border-bottom: 1px solid var(--border-line);
-            padding-right: 0; padding-bottom: 20px; max-width: 600px; font-style: italic;
+        
+        body.show-en #quote-container {
+            font-style: italic;
+            font-family: "Georgia", serif;
         }
+
+        .quote-line-break { 
+            display: block; 
+            margin-top: 15px; 
+            content: "";
+        } 
 
         footer {
             text-align: center; padding-top: 50px; padding-bottom: 30px;
@@ -221,7 +240,6 @@
             border-radius: 2px; letter-spacing: 2px;
         }
 
-        /* 移动端适配 */
         @media (max-width: 768px) {
             .main-wrapper { 
                 padding: 20px 15px; 
@@ -237,12 +255,12 @@
             
             .books-container { grid-template-columns: 1fr; gap: 50px; padding: 40px 20px; }
             
-            .motto-text { 
-                writing-mode: horizontal-tb; height: auto; 
-                font-size: 1.35rem; line-height: 1.6;
-                border-right: none; border-bottom: 1px solid var(--border-line);
-                padding-bottom: 30px; padding-right: 0; width: 85%;
+            #quote-container {
+                font-size: 1.25rem; 
+                line-height: 1.6;
+                width: 100%;
             }
+            .quote-line-break { margin-top: 12px; }
             .lang-switch { top: 10px; right: 10px; }
             .lang-btn { margin: 0 8px; font-size: 1rem; }
         }
@@ -259,13 +277,11 @@
 
         <header class="hero-section">
             <div class="portrait-frame">
-                <!-- 修复链接：去除 refs/heads/，使用标准 Raw 链接 -->
                 <img src="https://raw.githubusercontent.com/leijimu/nihaixia/main/nihaixia-wb.jpg" 
                      class="portrait-img" 
-                     alt="Ni Hai-Sha (倪海厦) Portrait"
+                     alt="Ni Hai-Sha"
                      onerror="this.style.backgroundColor='#e0e0e0'; this.alt='Image not found';">
             </div>
-            
             <h1 class="master-name">
                 <span class="lang-cn">倪海厦</span>
                 <span class="lang-tw">倪海廈</span>
@@ -283,55 +299,21 @@
                 <span class="lang-en">Biography</span>
             </h2>
             <div class="bio-text">
-                <!-- 简体 -->
                 <div class="lang-cn">
-                    <p>倪海厦（1954-2012），生于台湾，早年毕业于东吴大学政治学系。少时曾梦想成为摇滚吉他手，后因阅读《医宗金鉴》自学治愈亲人妇科疾病，遂与中医结下不解之缘。他博古通今，除精通医术外，亦擅长命理、占卜与风水（化名梵宇龙），展现了传统文化通才的造诣。</p>
-                    <p>1990年代初，倪师赴美创立“汉唐经方中医诊所”及汉唐中医学院。他曾于2000年至2003年受命担任美国佛罗里达州针灸委员会委员及副主席，致力推动针灸立法，并获侨委会颁发海外优秀华人奖。倪师一生力排众议，强烈批判西方医学之流弊，誓言复兴《伤寒》、《金匮》之正统经方。晚年更受邀至上海中医药大学扶阳论坛及斯坦福大学（Stanford University）演讲，吸引千人聆听，引起巨大反响。</p>
-                    <p>为将毕生所学传承后世，倪师耗尽心血录制《人纪》教学，涵盖针灸、内经、本草、伤寒、金匮五大篇章，成为当代中医教育的重要瑰宝。</p>
-                </div>
-                
-                <!-- 繁体 -->
-                <div class="lang-tw">
-                    <p>倪海廈（1954-2012），生於台灣，早年畢業於東吳大學政治學系。少時曾夢想成為搖滾吉他手，後因閱讀《醫宗金鑑》自學治癒親人婦科疾病，遂與中醫結下不解之緣。他博古通今，除精通醫術外，亦擅長命理、占卜與風水（化名梵宇龍），展現了傳統文化通才的造詣。</p>
-                    <p>1990年代初，倪師赴美創立「漢唐經方中醫診所」及漢唐中醫學院。他曾於2000年至2003年受命擔任美國佛羅里達州針灸委員會委員及副主席，致力推動針灸立法，並獲僑委會頒發海外優秀華人獎。倪師一生力排眾議，強烈批判西方醫學之流弊，誓言復興《傷寒》、《金匱》之正統經方。晚年更受邀至上海中醫藥大學扶陽論壇及史丹福大學（Stanford University）演講，吸引千人聆聽，引起巨大反響。</p>
-                    <p>為將畢生所學傳承後世，倪師耗盡心血錄製《人紀》教學，涵蓋針灸、內經、本草、傷寒、金匱五大篇章，成為當代中醫教育的重要瑰寶。</p>
-                </div>
-
-                <!-- 日文 -->
-                <div class="lang-jp">
-                    <p>倪海厦（ニ・ハイシャ、1954-2012）。台湾に生まれ、東呉大学政治学部を卒業。若き日はロックギタリストを夢見ていたが、『医宗金鑑』を独学し姉の病を治癒させたことを機に、医学の道へと進んだ。医術のみならず、命理、占卜、風水（筆名：梵宇龍）にも精通した。</p>
-                    <p>1990年代に渡米し、「漢唐経方中医診療所」及び学院を開設。2000年から2003年までフロリダ州鍼灸委員会の副委員長を歴任し、米国における鍼灸の法的地位向上に尽力した。生涯を通じて現代西洋医学の偏重を強く批判し、漢代・唐代の正統なる「経方」医学の復興に捧げた。晩年には上海中医薬大学やスタンフォード大学（Stanford University）で講演を行い、大きな反響を呼んだ。</p>
-                    <p>その絶学を後世に残すべく、心血を注いで『人紀』シリーズ（鍼灸、内経、本草、傷寒、金匱）を完成させた。</p>
-                </div>
-
-                <!-- 英文 -->
-                <div class="lang-en">
-                    <p>Ni Hai-Sha (1954–2012), born in Taiwan, was a graduate of Soochow University. In his youth, he dreamed of becoming a rock guitarist but turned to Traditional Chinese Medicine (TCM) after curing his sister's illness by studying the <em>Golden Mirror of Medicine</em>. A true polymath, Master Ni was also an expert in Feng Shui and astrology (under the alias Fan Yulong).</p>
-                    <p>In the 1990s, he founded the "Han Tang TCM Clinic" in the US. He served as Vice Chair of the Florida Board of Acupuncture (2000-2003), playing a key role in legislative advancements for acupuncture. Known for his bold criticism of Western pharmaceutical reliance, he dedicated his life to reviving the orthodox "Jing Fang" (Classical Prescriptions). His influence reached global heights with major lectures at the Shanghai University of TCM and Stanford University.</p>
-                    <p>His legacy is immortalized in the "Ren Ji" series, a comprehensive teaching of the five classic pillars of TCM: Acupuncture, Neijing, Herbology, Shanghan, and Jinkui.</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="content-section">
-            <h2 class="section-header">
-                <span class="lang-cn">师承与轶事</span>
-                <span class="lang-tw">師承與軼事</span>
-                <span class="lang-jp">師承と逸話</span>
-                <span class="lang-en">Lineage & Anecdotes</span>
-            </h2>
-            <div class="bio-text">
-                <div class="lang-cn">
-                    <p>据《人纪》记载及相关访谈，倪海厦早年师承周左宇医师与徐济民医师。1977年至1981年间，他在周左宇医师门下潜心研习针灸，尽得真传。彼时周医师尚未在台北易经学会开班，故这一段师徒情谊鲜为外界所知。</p>
+                    <p>倪海厦（1954-2012），生于台湾，早年毕业于东吴大学政治学系。少时曾梦想成为摇滚吉他手，后因阅读《医宗金鉴》自学治愈亲人妇科疾病，遂与中医结下不解之缘。他博古通今，除精通医术外，亦擅长命理、占卜与风水（化名梵宇龙）。</p>
+                    <p>1990年代初，倪师赴美创立“汉唐经方中医诊所”及汉唐中医学院。他曾任美国佛罗里达州针灸委员会副主席，致力推动针灸立法。倪师一生力排众议，强烈批判西方医学之流弊，誓言复兴《伤寒》、《金匮》之正统经方。晚年更受邀至上海中医药大学扶阳论坛及斯坦福大学演讲。</p>
                 </div>
                 <div class="lang-tw">
-                    <p>據《人紀》記載及相關訪談，倪海廈早年師承周左宇醫師與徐濟民醫師。1977年至1981年間，他在周左宇醫師門下潛心研習針灸，盡得真傳。彼時周醫師尚未在台北易經學會開班，故這一段師徒情誼鮮為外界所知。</p>
+                    <p>倪海廈（1954-2012），生於台灣，早年畢業於東吳大學政治學系。少時曾夢想成為搖滾吉他手，後因閱讀《醫宗金鑑》自學治癒親人婦科疾病，遂與中醫結下不解之緣。他博古通今，除精通醫術外，亦擅長命理、占卜與風水（化名梵宇龍）。</p>
+                    <p>1990年代初，倪師赴美創立「漢唐經方中醫診所」及漢唐中醫學院。他曾任美國佛羅里達州針灸委員會副主席，致力推動針灸立法。倪師一生力排眾議，強烈批判西方醫學之流弊，誓言復興《傷寒》、《金匱》之正統經方。晚年更受邀至上海中醫藥大學扶陽論壇及史丹福大學演講。</p>
                 </div>
                 <div class="lang-jp">
-                    <p>記録によれば、倪海厦は周左宇医師と徐済民医師に師事した。1977年から1981年にかけて、周左宇医師のもとで鍼灸を深く研鑽した。当時、周医師はまだ公に講義を行っていなかったため、この師弟関係は外部にはあまり知られていなかった。</p>
+                    <p>倪海厦（ニ・ハイシャ、1954-2012）。台湾生まれ。若き日はロックギタリストを夢見ていたが、『医宗金鑑』を独学し姉の病を治癒させたことを機に医学の道へ。医術のみならず、命理、占卜、風水にも精通した。</p>
+                    <p>1990年代に渡米し、「漢唐経方中医診療所」を開設。フロリダ州鍼灸委員会の副委員長を歴任。生涯を通じて現代西洋医学の偏重を強く批判し、正統なる「経方」医学の復興に捧げた。</p>
                 </div>
                 <div class="lang-en">
-                    <p>According to records, Master Ni studied under Dr. Zhou Zuoyu and Dr. Xu Jimin. From 1977 to 1981, he immersed himself in the study of acupuncture under Dr. Zhou's mentorship. As Dr. Zhou had not yet begun public teaching at the time, this close mentorship remained a quiet chapter in his early career.</p>
+                    <p>Ni Hai-Sha (1954–2012) was a master of Traditional Chinese Medicine (TCM) and an expert in Feng Shui. Originally dreaming of being a guitarist, he taught himself medicine to cure his sister.</p>
+                    <p>He founded the Han Tang TCM Clinic in the US and served on the Florida Board of Acupuncture. Known for his bold criticism of Western pharmaceutical reliance, he dedicated his life to reviving orthodox "Jing Fang" (Classical Prescriptions).</p>
                 </div>
             </div>
         </section>
@@ -339,45 +321,22 @@
         <section class="content-section">
             <div class="books-container">
                 <div class="book-col">
-                    <div class="book-icon"><span class="lang-cn-inline">天</span><span class="lang-tw-inline">天</span><span class="lang-jp-inline">天</span><span class="lang-en-inline">T</span></div>
-                    <h3 class="book-title"><span class="lang-cn">天纪</span><span class="lang-tw">天紀</span><span class="lang-jp">天紀</span><span class="lang-en">Tian Ji</span></h3>
-                    <div class="book-desc">
-                        <span class="lang-cn">易经命理<br>以明天道</span>
-                        <span class="lang-tw">易經命理<br>以明天道</span>
-                        <span class="lang-jp">易経命理<br>天道を知る</span>
-                        <span class="lang-en">I-Ching &<br>Astrology</span>
-                    </div>
+                    <div class="book-icon">天</div><h3 class="book-title">天纪</h3>
+                    <div class="book-desc"><span class="lang-cn">易经命理</span><span class="lang-tw">易經命理</span><span class="lang-jp">易経命理</span><span class="lang-en">Astrology</span></div>
                 </div>
                 <div class="book-col">
-                    <div class="book-icon"><span class="lang-cn-inline">人</span><span class="lang-tw-inline">人</span><span class="lang-jp-inline">人</span><span class="lang-en-inline">R</span></div>
-                    <h3 class="book-title"><span class="lang-cn">人纪</span><span class="lang-tw">人紀</span><span class="lang-jp">人紀</span><span class="lang-en">Ren Ji</span></h3>
-                    <div class="book-desc">
-                        <span class="lang-cn">五大经典<br>以定人事</span>
-                        <span class="lang-tw">五大經典<br>以定人事</span>
-                        <span class="lang-jp">五大経典<br>人事を定む</span>
-                        <span class="lang-en">TCM<br>Classics</span>
-                    </div>
+                    <div class="book-icon">人</div><h3 class="book-title">人纪</h3>
+                    <div class="book-desc"><span class="lang-cn">五大经典</span><span class="lang-tw">五大經典</span><span class="lang-jp">五大経典</span><span class="lang-en">Classics</span></div>
                 </div>
                 <div class="book-col">
-                    <div class="book-icon"><span class="lang-cn-inline">地</span><span class="lang-tw-inline">地</span><span class="lang-jp-inline">地</span><span class="lang-en-inline">D</span></div>
-                    <h3 class="book-title"><span class="lang-cn">地纪</span><span class="lang-tw">地紀</span><span class="lang-jp">地紀</span><span class="lang-en">Di Ji</span></h3>
-                    <div class="book-desc">
-                        <span class="lang-cn">堪舆风水<br>以识地利</span>
-                        <span class="lang-tw">堪輿風水<br>以識地利</span>
-                        <span class="lang-jp">風水地理<br>地利を識る</span>
-                        <span class="lang-en">Feng Shui<br>Geography</span>
-                    </div>
+                    <div class="book-icon">地</div><h3 class="book-title">地纪</h3>
+                    <div class="book-desc"><span class="lang-cn">堪舆风水</span><span class="lang-tw">堪輿風水</span><span class="lang-jp">風水地理</span><span class="lang-en">Feng Shui</span></div>
                 </div>
             </div>
         </section>
 
         <section class="motto-section">
-            <div class="motto-text">
-                <span class="lang-cn">经方者 中医之灵魂</span>
-                <span class="lang-tw">經方者 中醫之靈魂</span>
-                <span class="lang-jp">経方とは 中医の魂なり</span>
-                <span class="lang-en">"Jing Fang is the soul of TCM"</span>
-            </div>
+            <div id="quote-container"></div>
         </section>
 
         <footer>
@@ -385,15 +344,96 @@
             <p>&copy; Ni Hai-Sha Memorial</p>
         </footer>
     </div>
+
     <script>
+        const quotes = [
+            { cn: "经方者 中医之灵魂<br class='quote-line-break'>亦对抗病魔之利器", tw: "經方者 中醫之靈魂<br class='quote-line-break'>亦對抗病魔之利器", jp: "経方とは 中医の魂であり<br class='quote-line-break'>病魔に対抗する利器である", en: "\"Classical Prescriptions are the soul of TCM,<br>and the ultimate weapon against disease.\"" },
+            { cn: "正统中医<br class='quote-line-break'>一剂知 二剂已", tw: "正統中醫<br class='quote-line-break'>一劑知 二劑已", jp: "正統なる中医は<br class='quote-line-break'>一剤で知り 二剤で癒す", en: "\"True TCM: Effects with the first dose,<br>cure with the second.\"" },
+            { cn: "西医是微观医学<br class='quote-line-break'>中医是宏观医学", tw: "西醫是微觀醫學<br class='quote-line-break'>中醫是宏觀醫學", jp: "西洋医学は微観的であり<br class='quote-line-break'>中医は宏観的である", en: "\"Western medicine is microscopic;<br>Chinese medicine is macroscopic.\"" },
+            { cn: "站在外面<br class='quote-line-break'>就能看到里面", tw: "站在外面<br class='quote-line-break'>就能看到裡面", jp: "外に立ちて<br class='quote-line-break'>内を知る", en: "\"Standing on the outside,<br>one can perceive the inside.\"" },
+            { cn: "各种维他命<br class='quote-line-break'>是制造尿液的昂贵原料", tw: "各種維他命<br class='quote-line-break'>是製造尿液的昂貴原料", jp: "ビタミン剤とは<br class='quote-line-break'>高価な尿を作る原料に過ぎない", en: "\"Vitamins are just expensive ingredients<br>to make urine.\"" },
+            { cn: "心脏永远不会生癌<br class='quote-line-break'>因为它太热了", tw: "心臟永遠不會生癌<br class='quote-line-break'>因為它太熱了", jp: "心臓に癌は生じない<br class='quote-line-break'>熱すぎるからだ", en: "\"The heart never gets cancer<br>because it is too hot.\"" },
+            { cn: "牛奶是给小牛喝的<br class='quote-line-break'>不是给人类喝的", tw: "牛奶是給小牛喝的<br class='quote-line-break'>不是給人類喝的", jp: "牛乳は子牛のためのものであり<br class='quote-line-break'>人間のものではない", en: "\"Milk is for calves,<br>not for humans.\"" },
+            { cn: "百病风之始<br class='quote-line-break'>感冒没治好是万病之源", tw: "百病風之始<br class='quote-line-break'>感冒沒治好是萬病之源", jp: "万病は風より始まる<br class='quote-line-break'>風邪の誤治は万病の源", en: "\"All diseases start from the wind;<br>an uncured cold is the root of all illness.\"" },
+            { cn: "人工糖<br class='quote-line-break'>是喂养癌细胞的食物", tw: "人工糖<br class='quote-line-break'>是餵養癌細胞的食物", jp: "人工砂糖は<br class='quote-line-break'>癌細胞の餌である", en: "\"Refined sugar<br>is food for cancer cells.\"" },
+            { cn: "不通过望闻问切<br class='quote-line-break'>只看报告的不是中医", tw: "不通過望聞問切<br class='quote-line-break'>只看報告的不是中醫", jp: "四診を行わず<br class='quote-line-break'>検査値のみを見るは中医にあらず", en: "\"Relying on lab reports instead of diagnosis<br>is not TCM.\"" },
+            { cn: "脚热无癌<br class='quote-line-break'>手脚冰冷是生病的前兆", tw: "腳熱無癌<br class='quote-line-break'>手腳冰冷是生病的前兆", jp: "足熱すれば癌なし<br class='quote-line-break'>手足の冷えは病の前兆なり", en: "\"Hot feet mean no cancer;<br>Cold hands and feet are signs of illness.\"" },
+            { cn: "能吃能睡能拉<br class='quote-line-break'>就是健康的标准", tw: "能吃能睡能拉<br class='quote-line-break'>就是健康的標準", jp: "快食・快眠・快便<br class='quote-line-break'>これぞ健康の標準", en: "\"Eating, sleeping, and excreting well<br>are the standards of health.\"" },
+            { cn: "中医是物理医学<br class='quote-line-break'>西医是化学医学", tw: "中醫是物理醫學<br class='quote-line-break'>西醫是化學醫學", jp: "中医は物理医学<br class='quote-line-break'>西洋医学は化学医学", en: "\"TCM is physics;<br>Western medicine is chemistry.\"" },
+            { cn: "在这个世界上<br class='quote-line-break'>只有一种病叫做『不开心』", tw: "在這個世界上<br class='quote-line-break'>只有一種病叫做『不開心』", jp: "この世に病は一つ<br class='quote-line-break'>『不快』という病だけだ", en: "\"In this world,<br>there is only one disease: Unhappiness.\"" },
+            { cn: "真正的医生<br class='quote-line-break'>是治未病", tw: "真正的醫生<br class='quote-line-break'>是治未病", jp: "真の医師は<br class='quote-line-break'>未病を治す", en: "\"A true doctor<br>treats disease before it arises.\"" },
+            { cn: "正常人一年四季<br class='quote-line-break'>头面身体都是冷的", tw: "正常人一年四季<br class='quote-line-break'>頭面身體都是冷的", jp: "正常な人は<br class='quote-line-break'>頭も体も冷えている", en: "\"A healthy person's head and body<br>should feel cool to the touch.\"" },
+            { cn: "滥用抗生素<br class='quote-line-break'>等于在自杀", tw: "濫用抗生素<br class='quote-line-break'>等於在自殺", jp: "抗生物質の乱用は<br class='quote-line-break'>自殺に等しい", en: "\"Abusing antibiotics<br>is akin to suicide.\"" },
+            { cn: "无论任何癌症<br class='quote-line-break'>必先失眠", tw: "無論任何癌症<br class='quote-line-break'>必先失眠", jp: "いかなる癌も<br class='quote-line-break'>不眠より始まる", en: "\"Insomnia precedes<br>all forms of cancer.\"" },
+            { cn: "女人经期洗头<br class='quote-line-break'>易得头痛与癌变", tw: "女人經期洗頭<br class='quote-line-break'>易得頭痛與癌變", jp: "生理中の洗髪は<br class='quote-line-break'>頭痛と病変を招く", en: "\"Washing hair during menstruation<br>invites headaches and illness.\"" },
+            { cn: "疫苗<br class='quote-line-break'>是破坏免疫系统的杀手", tw: "疫苗<br class='quote-line-break'>是破壞免疫系統的殺手", jp: "ワクチンは<br class='quote-line-break'>免疫系を破壊する", en: "\"Vaccines can destroy<br>the immune system.\"" },
+            { cn: "要相信你的身体<br class='quote-line-break'>不要相信机器", tw: "要相信你的身體<br class='quote-line-break'>不要相信機器", jp: "己の体を信じよ<br class='quote-line-break'>機械を信じるな", en: "\"Trust your body,<br>not the machines.\"" },
+            { cn: "肾主骨，骨生髓<br class='quote-line-break'>脑为髓之海", tw: "腎主骨，骨生髓<br class='quote-line-break'>腦為髓之海", jp: "腎は骨を主り、骨は髄を生ず<br class='quote-line-break'>脳は髄の海なり", en: "\"Kidneys govern bones, bones generate marrow,<br>the brain is the sea of marrow.\"" },
+            { cn: "肺主皮毛<br class='quote-line-break'>皮肤不好先治肺", tw: "肺主皮毛<br class='quote-line-break'>皮膚不好先治肺", jp: "肺は皮毛を主る<br class='quote-line-break'>皮膚病はまず肺を治せ", en: "\"Lungs govern skin and hair;<br>treat the lungs for skin issues.\"" },
+            { cn: "肝主筋<br class='quote-line-break'>全身无力是肝的问题", tw: "肝主筋<br class='quote-line-break'>全身無力是肝的問題", jp: "肝は筋を主る<br class='quote-line-break'>脱力感は肝の問題だ", en: "\"Liver governs tendons;<br>weakness comes from the liver.\"" },
+            { cn: "脾主肌肉<br class='quote-line-break'>肌肉萎缩要治脾", tw: "脾主肌肉<br class='quote-line-break'>肌肉萎縮要治脾", jp: "脾は肌肉を主る<br class='quote-line-break'>筋萎縮は脾を治せ", en: "\"Spleen governs muscles;<br>treat spleen for atrophy.\"" },
+            { cn: "痛是因为压力<br class='quote-line-break'>不是因为发炎", tw: "痛是因為壓力<br class='quote-line-break'>不是因為發炎", jp: "痛みは圧力によるもの<br class='quote-line-break'>炎症ではない", en: "\"Pain is caused by pressure,<br>not inflammation.\"" },
+            { cn: "阴阳平衡<br class='quote-line-break'>百病不生", tw: "陰陽平衡<br class='quote-line-break'>百病不生", jp: "陰陽平衡なれば<br class='quote-line-break'>百病生ぜず", en: "\"When Yin and Yang are balanced,<br>disease cannot arise.\"" },
+            { cn: "阳气不足<br class='quote-line-break'>是现代人的通病", tw: "陽氣不足<br class='quote-line-break'>是現代人的通病", jp: "陽気不足は<br class='quote-line-break'>現代人の通病だ", en: "\"Deficiency of Yang Qi<br>is the modern epidemic.\"" },
+            { cn: "早晨阳物不举<br class='quote-line-break'>是心阳不足之兆", tw: "早晨陽物不舉<br class='quote-line-break'>是心陽不足之兆", jp: "朝立ちせざるは<br class='quote-line-break'>心陽不足の兆し", en: "\"Lack of morning erection<br>signals weak Heart Yang.\"" },
+            { cn: "最好的补药<br class='quote-line-break'>是白米饭", tw: "最好的補藥<br class='quote-line-break'>是白米飯", jp: "最良の補薬は<br class='quote-line-break'>白飯である", en: "\"The best supplement<br>is plain white rice.\"" },
+            { cn: "多喝茶<br class='quote-line-break'>少喝咖啡", tw: "多喝茶<br class='quote-line-break'>少喝咖啡", jp: "茶を多く飲み<br class='quote-line-break'>珈琲を控えよ", en: "\"Drink more tea,<br>less coffee.\"" },
+            { cn: "睡眠时刻<br class='quote-line-break'>是身体修复的黄金时间", tw: "睡眠時刻<br class='quote-line-break'>是身體修復的黃金時間", jp: "睡眠時間は<br class='quote-line-break'>身体修復の黄金時", en: "\"Sleep is the golden time<br>for body repair.\"" },
+            { cn: "肝胆在半夜1-3点排毒<br class='quote-line-break'>必须熟睡", tw: "肝膽在半夜1-3點排毒<br class='quote-line-break'>必須熟睡", jp: "丑の刻（1-3時）は<br class='quote-line-break'>肝胆の排毒時、熟睡せよ", en: "\"Deep sleep between 1-3 AM<br>is vital for Liver detox.\"" },
+            { cn: "便秘是万病之源<br class='quote-line-break'>要想不死肠中无屎", tw: "便秘是萬病之源<br class='quote-line-break'>要想不死腸中無屎", jp: "便秘は万病の源<br class='quote-line-break'>長生きしたくば腸を清めよ", en: "\"Constipation is the root of all illness;<br>keep the bowels empty.\"" },
+            { cn: "小孩子是纯阳之体<br class='quote-line-break'>不应该怕冷", tw: "小孩子是純陽之體<br class='quote-line-break'>不應該怕冷", jp: "子供は純陽の体<br class='quote-line-break'>寒さを恐れぬものだ", en: "\"Children are pure Yang bodies;<br>they shouldn't feel cold.\"" },
+            { cn: "感冒吃抗生素<br class='quote-line-break'>只会把寒气锁在体内", tw: "感冒吃抗生素<br class='quote-line-break'>只會把寒氣鎖在體內", jp: "風邪に抗生物質は<br class='quote-line-break'>寒気を体内に封じ込めるだけ", en: "\"Antibiotics for a cold<br>only lock the cold inside.\"" },
+            { cn: "经方治病<br class='quote-line-break'>简、便、廉、验", tw: "經方治病<br class='quote-line-break'>簡、便、廉、驗", jp: "経方の治は<br class='quote-line-break'>簡・便・廉・験なり", en: "\"Jing Fang healing is<br>Simple, Convenient, Cheap, Effective.\"" },
+            { cn: "不知道病怎么来的<br class='quote-line-break'>怎么能治好病？", tw: "不知道病怎麼來的<br class='quote-line-break'>怎麼能治好病？", jp: "病因を知らずして<br class='quote-line-break'>如何に病を治すか？", en: "\"How can you cure a disease<br>if you don't know its origin?\"" },
+            { cn: "西药是压制症状<br class='quote-line-break'>不是治病", tw: "西藥是壓制症狀<br class='quote-line-break'>不是治病", jp: "西洋薬は症状を抑えるのみ<br class='quote-line-break'>治療ではない", en: "\"Western drugs suppress symptoms;<br>they do not cure.\"" },
+            { cn: "高血压是身体的求救信号<br class='quote-line-break'>不是病", tw: "高血壓是身體的求救信號<br class='quote-line-break'>不是病", jp: "高血圧は身体のSOS信号<br class='quote-line-break'>病ではない", en: "\"High blood pressure is an SOS signal,<br>not a disease.\"" },
+            { cn: "糖尿病是因为<br class='quote-line-break'>缺乏运动与津液不足", tw: "糖尿病是因為<br class='quote-line-break'>缺乏運動與津液不足", jp: "糖尿病は<br class='quote-line-break'>運動不足と津液不足なり", en: "\"Diabetes comes from lack of exercise<br>and fluid deficiency.\"" },
+            { cn: "化疗是在杀人<br class='quote-line-break'>不是在杀癌", tw: "化療是在殺人<br class='quote-line-break'>不是在殺癌", jp: "化学療法は人を殺す<br class='quote-line-break'>癌を殺すにあらず", en: "\"Chemotherapy kills the patient,<br>not the cancer.\"" },
+            { cn: "人是死于吓死<br class='quote-line-break'>和过度治疗", tw: "人是死於嚇死<br class='quote-line-break'>和過度治療", jp: "人は恐怖と<br class='quote-line-break'>過剰医療で死ぬ", en: "\"People die from fear<br>and overtreatment.\"" },
+            { cn: "身体有自愈能力<br class='quote-line-break'>给它机会", tw: "身體有自癒能力<br class='quote-line-break'>給它機會", jp: "身体には自癒力がある<br class='quote-line-break'>機会を与えよ", en: "\"The body can heal itself;<br>give it a chance.\"" },
+            { cn: "桂枝汤<br class='quote-line-break'>是天下第一方", tw: "桂枝湯<br class='quote-line-break'>是天下第一方", jp: "桂枝湯は<br class='quote-line-break'>天下第一の処方なり", en: "\"Gui Zhi Tang<br>is the number one formula.\"" },
+            { cn: "麻黄汤<br class='quote-line-break'>是还魂汤", tw: "麻黃湯<br class='quote-line-break'>是還魂湯", jp: "麻黄湯は<br class='quote-line-break'>還魂の湯なり", en: "\"Ma Huang Tang<br>brings the soul back.\"" },
+            { cn: "四逆汤<br class='quote-line-break'>能起死回生", tw: "四逆湯<br class='quote-line-break'>能起死回生", jp: "四逆湯は<br class='quote-line-break'>起死回生の効あり", en: "\"Si Ni Tang<br>can resurrect the dying.\"" },
+            { cn: "健康的人<br class='quote-line-break'>额头是凉的，手脚是热的", tw: "健康的人<br class='quote-line-break'>額頭是涼的，手腳是熱的", jp: "健康人は<br class='quote-line-break'>額は涼しく、手足は温かい", en: "\"Healthy people have cool foreheads<br>and hot hands and feet.\"" },
+            { cn: "中医不分中西<br class='quote-line-break'>只分治得好与治不好", tw: "中醫不分中西<br class='quote-line-break'>只分治得好與治不好", jp: "医に中西の別なし<br class='quote-line-break'>治せるか否かのみ", en: "\"Medicine isn't East or West;<br>it's about what cures.\"" },
+            { cn: "薪火相传<br class='quote-line-break'>生生不息", tw: "薪火相傳<br class='quote-line-break'>生生不息", jp: "薪火相伝<br class='quote-line-break'>生々流転", en: "\"Passing the torch,<br>life unending.\"" }
+        ];
+
+        let currentQuoteIndex = 0;
+        let currentLang = 'cn'; 
+        let quoteInterval;
+
+        function updateQuoteDisplay() {
+            const container = document.getElementById('quote-container');
+            container.style.opacity = 0;
+            setTimeout(() => {
+                container.innerHTML = quotes[currentQuoteIndex][currentLang];
+                container.style.opacity = 1;
+            }, 1000); 
+        }
+
+        function startCarousel() {
+            document.getElementById('quote-container').innerHTML = quotes[currentQuoteIndex][currentLang];
+            if(quoteInterval) clearInterval(quoteInterval);
+            quoteInterval = setInterval(() => {
+                currentQuoteIndex = (currentQuoteIndex + 1) % quotes.length;
+                updateQuoteDisplay();
+            }, 5000);
+        }
+
         function setLang(lang) {
+            currentLang = lang;
             document.body.className = 'show-' + lang;
             document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
             document.getElementById('btn-' + lang).classList.add('active');
             localStorage.setItem('preferred-lang', lang);
+            document.getElementById('quote-container').innerHTML = quotes[currentQuoteIndex][lang];
         }
+
         document.addEventListener('DOMContentLoaded', () => {
-            setLang(localStorage.getItem('preferred-lang') || 'cn');
+            const savedLang = localStorage.getItem('preferred-lang') || 'cn';
+            setLang(savedLang);
+            startCarousel();
         });
     </script>
 </body>
