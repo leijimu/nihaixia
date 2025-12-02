@@ -47,8 +47,12 @@
             letter-spacing: 0.02em;
         }
 
-        /* 语言显示逻辑 */
-        [class^="lang-"] { display: none; }
+        /* ================= 修复核心：语言显示逻辑 ================= */
+        .lang-cn, .lang-tw, .lang-jp, .lang-en, 
+        .lang-cn-inline, .lang-tw-inline, .lang-jp-inline, .lang-en-inline { 
+            display: none; 
+        }
+
         body.show-cn .lang-cn { display: block; } body.show-cn .lang-cn-inline { display: inline; }
         body.show-tw .lang-tw { display: block; } body.show-tw .lang-tw-inline { display: inline; }
         body.show-en .lang-en { display: block; } body.show-en .lang-en-inline { display: inline; }
@@ -70,10 +74,12 @@
             position: absolute;
             top: 20px;
             right: 20px;
-            font-size: 0.85rem;
+            font-size: 0.9rem; 
             color: var(--ink-grey);
-            z-index: 100;
-            padding: 10px; 
+            z-index: 9999; 
+            padding: 5px;
+            background: rgba(255, 253, 249, 0.8);
+            border-radius: 4px;
         }
         .lang-btn {
             cursor: pointer;
@@ -81,6 +87,7 @@
             padding-bottom: 2px;
             border-bottom: 1px solid transparent;
             transition: all 0.3s;
+            font-weight: bold;
         }
         .lang-btn:hover, .lang-btn.active {
             color: var(--cinnabar);
@@ -167,24 +174,26 @@
         }
 
         .bio-text {
-            max-width: 700px; margin: 0 auto;
-            font-size: 1.1rem; text-align: justify;
+            max-width: 740px; /* 稍微加宽以容纳更多文字 */
+            margin: 0 auto;
+            font-size: 1.05rem; 
+            text-align: justify;
             color: #222;
         }
         body.show-cn .bio-text, body.show-tw .bio-text, body.show-jp .bio-text { text-indent: 2em; }
         body.show-en .bio-text { text-indent: 0; }
         
-        .bio-text p { margin-bottom: 1.8em; }
+        .bio-text p { margin-bottom: 1.5em; }
 
         /* 书籍区域 */
         .books-container {
             display: grid; grid-template-columns: repeat(3, 1fr);
-            gap: 40px; /* 增加间距 */
+            gap: 40px; 
             margin-top: 20px;
             border-top: 1px solid var(--border-line);
             border-bottom: 1px solid var(--border-line);
             padding: 50px 0;
-            align-items: start; /* 顶部对齐 */
+            align-items: start; 
         }
         .book-col { display: flex; flex-direction: column; align-items: center; }
         
@@ -197,16 +206,15 @@
         
         h3.book-title { font-size: 1.5rem; margin-bottom: 15px; color: var(--ink-black); }
         
-        /* 优化后的描述文字样式 */
         .book-desc { 
             font-size: 0.95rem; 
-            color: #555; /* 稍微深一点的灰色 */
+            color: #555; 
             line-height: 1.8; 
-            text-align: justify; /* 两端对齐 */
-            max-width: 260px; /* 限制宽度，防止文字太长看著累 */
+            text-align: justify; 
+            max-width: 260px; 
         }
         
-        body.show-en .book-desc { text-align: left; } /* 英文左对齐更好看 */
+        body.show-en .book-desc { text-align: left; } 
 
         /* ================= 语录轮播区域 ================= */
         .motto-section {
@@ -269,7 +277,7 @@
             body.show-en h1.master-name { font-size: 1.8rem; letter-spacing: 0px; }
             
             .books-container { grid-template-columns: 1fr; gap: 50px; padding: 40px 20px; }
-            .book-desc { max-width: 100%; padding: 0 10px; } /* 手机端放宽限制 */
+            .book-desc { max-width: 100%; padding: 0 10px; }
 
             #quote-container {
                 font-size: 1.25rem; 
@@ -284,6 +292,7 @@
 </head>
 <body class="show-cn">
     <div class="main-wrapper">
+        <!-- 语言切换器 -->
         <div class="lang-switch">
             <span class="lang-btn" onclick="setLang('cn')" id="btn-cn">简</span>
             <span class="lang-btn" onclick="setLang('tw')" id="btn-tw">繁</span>
@@ -307,6 +316,7 @@
             <div class="life-dates">1954 - 2012</div>
         </header>
 
+        <!-- 生平部分：深度扩充 -->
         <section class="content-section">
             <h2 class="section-header">
                 <span class="lang-cn">宗师生平</span>
@@ -315,26 +325,37 @@
                 <span class="lang-en">Biography</span>
             </h2>
             <div class="bio-text">
+                <!-- 简体 -->
                 <div class="lang-cn">
-                    <p>倪海厦（1954-2012），生于台湾，早年毕业于东吴大学政治学系。少时曾梦想成为摇滚吉他手，后因阅读《医宗金鉴》自学治愈亲人妇科疾病，遂与中医结下不解之缘。他博古通今，除精通医术外，亦擅长命理、占卜与风水（化名梵宇龙）。</p>
-                    <p>1990年代初，倪师赴美创立“汉唐经方中医诊所”及汉唐中医学院。他曾任美国佛罗里达州针灸委员会副主席，致力推动针灸立法。倪师一生力排众议，强烈批判西方医学之流弊，誓言复兴《伤寒》、《金匮》之正统经方。晚年更受邀至上海中医药大学扶阳论坛及斯坦福大学演讲。</p>
+                    <p>倪海厦（1954-2012），生于台湾，东吴大学政治学系毕业。少时心怀摇滚吉他梦，后因依《医宗金鉴》自学治愈胞姐之妇科顽疾，遂与中医结缘。早年曾于台北金山南路以“梵宇龙”之名为人算命看相，虽未持执照，然名声渐起。1977至1981年间，他拜入周左宇医师门下潜心研习针灸，随师临床，施针救人逾六千，尽得真传。</p>
+                    <p>1991年，倪师赴美取得佛罗里达州针灸师执照（AP356），创立“汉唐经方中医诊所”及汉唐中医学院。其医术精湛，屡起沉疴，治愈无数西医判定之绝症，被誉为“最后的希望”。2000年至2003年，受命担任佛州针灸委员会委员及副主席，并协助内布拉斯加州通过针灸法案，荣获侨委会张富美主席颁发“海外优秀华人奖”。</p>
+                    <p>为传承绝学，倪师通过网页日志、DVD教学及师徒制临床跟诊，倾囊相授《人纪》（针灸、内经、本草、伤寒、金匮）。2009年受邀至上海中医药大学扶阳论坛演讲；2010年9月，应斯坦福大学（Stanford）教授孟怀萦及李宗恩之邀赴硅谷演讲，吸引千人聆听，被《远见杂志》誉为“硅谷高科技华人迷中医”之热潮。晚年先后成立台北及深圳汉唐经方中医馆，以此生生不息。</p>
                 </div>
+                
+                <!-- 繁体 -->
                 <div class="lang-tw">
-                    <p>倪海廈（1954-2012），生於台灣，早年畢業於東吳大學政治學系。少時曾夢想成為搖滾吉他手，後因閱讀《醫宗金鑑》自學治癒親人婦科疾病，遂與中醫結下不解之緣。他博古通今，除精通醫術外，亦擅長命理、占卜與風水（化名梵宇龍）。</p>
-                    <p>1990年代初，倪師赴美創立「漢唐經方中醫診所」及漢唐中醫學院。他曾任美國佛羅里達州針灸委員會副主席，致力推動針灸立法。倪師一生力排眾議，強烈批判西方醫學之流弊，誓言復興《傷寒》、《金匱》之正統經方。晚年更受邀至上海中醫藥大學扶陽論壇及史丹福大學演講。</p>
+                    <p>倪海廈（1954-2012），生於台灣，東吳大學政治學系畢業。少時心懷搖滾吉他夢，後因依《醫宗金鑑》自學治癒胞姐之婦科頑疾，遂與中醫結緣。早年曾於台北金山南路以「梵宇龍」之名為人算命看相，雖未持執照，然名聲漸起。1977至1981年間，他拜入周左宇醫師門下潛心研習針灸，隨師臨床，施針救人逾六千，盡得真傳。</p>
+                    <p>1991年，倪師赴美取得佛羅里達州針灸師執照（AP356），創立「漢唐經方中醫診所」及漢唐中醫學院。其醫術精湛，屢起沉痾，治癒無數西醫判定之絕症，被譽為「最後的希望」。2000年至2003年，受命擔任佛州針灸委員會委員及副主席，並協助內布拉斯加州通過針灸法案，榮獲僑委會張富美主席頒發「海外優秀華人獎」。</p>
+                    <p>為傳承絕學，倪師通過網頁日誌、DVD教學及師徒制臨床跟診，傾囊相授《人紀》（針灸、內經、本草、傷寒、金匱）。2009年受邀至上海中醫藥大學扶陽論壇演講；2010年9月，應史丹福大學（Stanford）教授孟懷縈及李宗恩之邀赴矽谷演講，吸引千人聆聽，被《遠見雜誌》譽為「矽谷高科技華人迷中醫」之熱潮。晚年先後成立台北及深圳漢唐經方中醫館，以此生生不息。</p>
                 </div>
+
+                <!-- 日文 -->
                 <div class="lang-jp">
-                    <p>倪海厦（ニ・ハイシャ、1954-2012）。台湾生まれ。若き日はロックギタリストを夢見ていたが、『医宗金鑑』を独学し姉の病を治癒させたことを機に医学の道へ。医術のみならず、命理、占卜、風水にも精通した。</p>
-                    <p>1990年代に渡米し、「漢唐経方中医診療所」を開設。フロリダ州鍼灸委員会の副委員長を歴任。生涯を通じて現代西洋医学の偏重を強く批判し、正統なる「経方」医学の復興に捧げた。</p>
+                    <p>倪海厦（1954-2012）。台湾生まれ、東呉大学政治学部卒業。若き日はロックギタリストを夢見ていたが、『医宗金鑑』による独学で姉の病を治癒させたことを機に医学へ。1977年から1981年にかけ、周左宇医師に師事し、臨床の場で6000人以上を治療し、その真髄を得た。</p>
+                    <p>1991年、米国フロリダ州にて鍼灸師免許（AP356）を取得し、「漢唐経方中医診療所」を開設。西洋医学で見放された難病を次々と治癒させ、「最後の希望」と称された。2000年から2003年までフロリダ州鍼灸委員会の副委員長を務め、ネブラスカ州の鍼灸法案可決にも尽力し、「海外優秀華人賞」を受賞した。</p>
+                    <p>絶学を継承すべく、『人紀』シリーズ（鍼灸、内経、本草、傷寒、金匱）の教材を制作。2009年には上海中医薬大学「扶陽フォーラム」で講演。2010年にはスタンフォード大学（Stanford University）の孟懐縈教授らの招聘によりシリコンバレーで講演を行い、1200人以上を動員、『遠見雑誌』に特集されるほどの反響を呼んだ。晩年は台北と深圳にも診療所を開設し、その遺志は今も生き続けている。</p>
                 </div>
+
+                <!-- 英文 -->
                 <div class="lang-en">
-                    <p>Ni Hai-Xia (1954–2012) was a master of Traditional Chinese Medicine (TCM) and an expert in Feng Shui. Originally dreaming of being a guitarist, he taught himself medicine to cure his sister.</p>
-                    <p>He founded the Han Tang TCM Clinic in the US and served on the Florida Board of Acupuncture. Known for his bold criticism of Western pharmaceutical reliance, he dedicated his life to reviving orthodox "Jing Fang" (Classical Prescriptions).</p>
+                    <p>Ni Hai-Xia (1954–2012), born in Taiwan, was a graduate of Soochow University. In his youth, he dreamed of being a rock guitarist but turned to Traditional Chinese Medicine (TCM) after curing his sister using the <em>Golden Mirror of Medicine</em>. From 1977 to 1981, he apprenticed under Dr. Zhou Zuoyu, treating over 6,000 patients and mastering the art of acupuncture.</p>
+                    <p>In 1991, he obtained his Florida Acupuncture License (AP356) and founded the "Han Tang TCM Clinic," earning a reputation as "The Last Hope" for curing terminal illnesses. From 2000 to 2003, he served as Vice Chair of the Florida Board of Acupuncture and helped pass legislation in Nebraska. He was honored with the "Overseas Outstanding Chinese Award" by OCAC Minister Chang Fu-mei.</p>
+                    <p>To preserve orthodox TCM, Master Ni produced the "Ren Ji" series (Acupuncture, Neijing, Herbology, Shanghan, Jinkui). In 2010, invited by Prof. Meng Huaiying and Lee Tsung-en, he lectured at Stanford University to over 1,200 attendees, an event highlighted by <em>Global Views Monthly</em> as a "TCM Craze in Silicon Valley." He established clinics in Taipei and Shenzhen before his passing, ensuring his legacy endures.</p>
                 </div>
             </div>
         </section>
 
-        <!-- 三才绝学 (内容扩充版) -->
+        <!-- 三才绝学 -->
         <section class="content-section">
             <div class="books-container">
                 <!-- 天纪 -->
